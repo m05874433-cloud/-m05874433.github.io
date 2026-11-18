@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://telegram.org; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'">
+<title>AUREUM — сайты, Telegram-боты и воронки продаж</title>
+<meta name="description" content="AUREUM: делаем сайты, редизайн, Telegram-ботов и воронки продаж.">
+<meta name="theme-color" content="#000000">
+<script>document.documentElement.className='js'</script>
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;400;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --color-void:#000000;--color-bone-white:#ffffff;--color-ash-gray:#9a9a9a;--color-silver-mist:#bdbdbd;
+  --color-electric-iris:#8052ff;--color-saffron-spark:#ffb829;--color-deep-verdant:#15846e;
+  --font-ppneuemontreal:"PPNeueMontreal","Inter",system-ui,sans-serif;
+  --s6:6px;--s12:12px;--s18:18px;--s24:24px;--s30:30px;--s36:36px;--s60:60px;--s96:96px;--s120:120px;
+  --r:24px;--pill:9999px;
+  --p120:clamp(60px,9vw,120px);--p96:clamp(60px,7.5vw,96px);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;background:var(--color-void)}
+body{background:var(--color-void);color:var(--color-bone-white);font:200 18px/1.5 var(--font-ppneuemontreal);font-feature-settings:"ss01" on;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;text-align:left}
+ul,ol{list-style:none}
+:focus-visible{outline:2px solid var(--color-saffron-spark);outline-offset:4px;border-radius:6px}
+#fx{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;contain:strict;will-change:contents}
+main,footer,header{position:relative;z-index:1}
+.wrap{max-width:1280px;margin:0 auto;padding:0 clamp(20px,4vw,48px)}
+section{padding:var(--p120) 0}
+#hero{padding-bottom:0}
+#about,#why,#offer,#contacts{padding-block:var(--p120)}
+#services,#pricing{padding-block:var(--p96)}
+
+/* type */
+h1,h2,h3,.q,.big{font-weight:400}
+h1{font-size:clamp(44px,6.8vw,104px);max-width:960px;line-height:1.1;letter-spacing:-.04em}
+h2{font-size:clamp(34px,4.2vw,48px);line-height:1.1;letter-spacing:-.04em}
+h3{font-size:24px;line-height:1.25;letter-spacing:-.02em}
+.q{font-size:clamp(32px,4.8vw,68px);line-height:1.1;letter-spacing:-.04em;max-width:1000px}
+.man{font-size:clamp(34px,4.2vw,48px);line-height:1.1;letter-spacing:-.04em;font-weight:400}
+.tag{display:block;font:600 14px/1.2 var(--font-ppneuemontreal);letter-spacing:.025em;text-transform:uppercase;color:var(--color-saffron-spark)}
+p{color:var(--color-silver-mist)}
+.cap{font-size:12px}
+
+/* controls */
+.btn{display:inline-block;background:var(--color-electric-iris);color:var(--color-bone-white);font:600 14px/1.2 var(--font-ppneuemontreal);letter-spacing:.025em;text-transform:uppercase;padding:14px 18px;border-radius:var(--r);transition:background .25s,color .25s}
+.btn:hover{filter:brightness(1.12)}
+.lk{display:inline-block;color:var(--color-bone-white);font:400 16px/1.2 var(--font-ppneuemontreal);text-decoration:underline;text-decoration-color:var(--color-saffron-spark);text-underline-offset:8px;text-decoration-thickness:1px;transition:color .2s}
+.lk:hover{color:var(--color-saffron-spark)}
+.nl{font:600 14px/1.2 var(--font-ppneuemontreal);letter-spacing:.025em;text-transform:uppercase;color:var(--color-ash-gray);padding:12px 6px;transition:color .2s}
+.nl:hover{color:var(--color-bone-white)}
+
+/* header */
+header{position:fixed;top:0;left:0;right:0;z-index:20;background:transparent;transition:background .25s}
+body.sc header{background:var(--color-void)}
+.hb{max-width:1280px;margin:0 auto;padding:18px clamp(20px,4vw,48px);display:flex;align-items:center;justify-content:space-between;gap:12px}
+.logo{display:inline-flex;align-items:center;gap:12px;font:400 20px/1 var(--font-ppneuemontreal);letter-spacing:-.02em;color:var(--color-bone-white)}
+.logo svg{width:28px;height:28px}
+.hr{display:flex;align-items:center;gap:12px}
+body.cta2 #hc{background:transparent;color:var(--color-bone-white);padding:14px 18px}
+
+/* hero */
+#hero{min-height:100svh;display:flex;align-items:center;padding:calc(var(--s120) + 24px) 0 0}
+#hero .g{display:block}
+#hero .sp{display:none}
+#hero .wrap{width:100%}
+.hs{margin-top:var(--s60);max-width:420px;display:flex;flex-direction:column;gap:var(--s18);align-items:flex-start}
+
+/* two-col */
+.sh{display:grid;grid-template-columns:minmax(0,.35fr) minmax(0,1fr);gap:var(--s60)}
+.pr3,.c3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--s60) var(--s36)}
+.pr3 h3,.c3 h3{font-size:clamp(20px,2vw,24px);margin-bottom:var(--s12)}
+.c3{margin-top:var(--s96)}
+.pr3{margin-top:var(--s60)}
+
+/* services */
+.sv{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--s60) var(--s36)}
+.sv h3{font-size:clamp(27px,3vw,36px);line-height:1.2;letter-spacing:-.03em;margin:var(--s12) 0}
+
+/* numbers */
+.n{display:flex;gap:var(--s96);flex-wrap:wrap;align-items:flex-end}
+.n b{display:block;font-weight:400;font-size:clamp(76px,11vw,128px);line-height:1;letter-spacing:-.04em}
+.n div{max-width:340px}
+.n span{display:block;margin-top:var(--s12);color:var(--color-silver-mist)}
+
+/* pricing */
+.pl{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--s18);margin:0 calc(var(--s30) * -1)}
+.plan{display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-start;width:100%;padding:var(--s30);border-radius:var(--r);transition:box-shadow .25s,background .3s;background:transparent}
+.plan:hover h3{color:var(--color-saffron-spark)}
+.plan[aria-pressed="true"]{background:rgba(128,82,255,.18);box-shadow:inset 0 0 0 1px rgba(128,82,255,.55)}
+.plan .tag{margin-bottom:var(--s18)}
+.pc{font-size:clamp(56px,6vw,78px);font-weight:400;letter-spacing:-.04em;line-height:1.1;margin:var(--s12) 0 var(--s18)}
+.pc small{font-size:18px;font-weight:200;letter-spacing:0;color:var(--color-ash-gray)}
+.pd{margin-bottom:var(--s18)}
+.plan ul{display:grid;gap:6px;color:var(--color-silver-mist);margin-bottom:var(--s24);list-style:none}
+.pk{margin-top:auto;font:600 14px/1.2 var(--font-ppneuemontreal);letter-spacing:.025em;text-transform:uppercase;color:var(--color-ash-gray)}
+.plan[aria-pressed="true"] .pk{color:var(--color-bone-white)}
+.p1,.plan[aria-pressed="true"] .p0{display:none}
+.plan[aria-pressed="true"] .p1{display:inline}
+.pn{margin-top:var(--s60);max-width:640px}
+.pn b{font-weight:400;color:var(--color-bone-white)}
+.pcta{margin-top:var(--s30)}
+
+
+/* contacts */
+#contacts h2{font-size:clamp(48px,8.8vw,112px);line-height:1.1;letter-spacing:-.04em;margin-top:var(--s24)}
+#planNote{display:none;margin-top:var(--s30);color:var(--color-saffron-spark)}
+#planNote.show{display:block}
+.cl{display:flex;gap:var(--s18) var(--s60);flex-wrap:wrap;margin-top:var(--s60)}
+.cl a{font-size:clamp(36px,5vw,64px);font-weight:400;letter-spacing:-.04em;line-height:1.1;transition:color .2s}
+.cl a:hover{color:var(--color-saffron-spark)}
+.cs{margin-top:var(--s36)}
+
+/* footer */
+footer{padding:var(--s60) 0 var(--s120)}
+.fb{display:flex;justify-content:space-between;gap:var(--s36);flex-wrap:wrap;align-items:flex-end}
+.fb .logo{display:flex;margin-bottom:var(--s12)}
+.fb>div{color:var(--color-ash-gray)}
+.fb nav{display:flex;gap:var(--s12);flex-wrap:wrap}
+.fb nav a,.fb nav button{font:400 14px/1.2 var(--font-ppneuemontreal);letter-spacing:.025em;text-transform:uppercase;color:var(--color-ash-gray);padding:12px 18px;border-radius:var(--pill);transition:color .2s,background .2s}
+.fb nav a:hover,.fb nav button:hover{color:var(--color-bone-white);background:rgba(128,82,255,.18)}
+.fb nav .bt{color:var(--color-bone-white)}
+
+/* bar */
+#bar{position:fixed;left:0;right:0;bottom:0;z-index:15;background:var(--color-void);transform:translateY(110%);transition:transform .35s;padding:18px clamp(20px,4vw,48px) calc(18px + env(safe-area-inset-bottom,0px))}
+#bar.show{transform:none}
+#bar a{display:flex;justify-content:center;gap:12px;font:400 14px/1.2 var(--font-ppneuemontreal);letter-spacing:.025em;text-transform:uppercase}
+#bar a span:last-child{color:var(--color-saffron-spark)}
+
+/* menu */
+#menu{position:fixed;inset:0;z-index:30;background:var(--color-void);padding:calc(var(--s96)) clamp(20px,4vw,48px) var(--s60);opacity:0;visibility:hidden;transition:opacity .3s,visibility .3s;overflow:auto}
+#menu.open{opacity:1;visibility:visible}
+#mc{position:absolute;top:18px;right:clamp(20px,4vw,48px);font:600 14px/1.2 var(--font-ppneuemontreal);letter-spacing:.025em;text-transform:uppercase;color:var(--color-ash-gray);padding:12px 6px}
+#mc:hover{color:var(--color-electric-iris);text-decoration:underline;text-decoration-color:var(--color-saffron-spark);text-underline-offset:8px}
+#menu ol{max-width:1280px;margin:0 auto}
+#menu a{display:flex;align-items:baseline;gap:var(--s24);font-size:clamp(42px,7.5vw,78px);font-weight:400;letter-spacing:-.04em;line-height:1.2;color:var(--color-bone-white);transition:color .2s}
+#menu a:hover{color:var(--color-saffron-spark)}
+#menu a span{font:400 12px/1 "JetBrains Mono",ui-monospace,monospace;letter-spacing:0;color:var(--color-electric-iris);min-width:24px}
+
+/* modal */
+#md{position:fixed;inset:0;z-index:40;background:rgba(0,0,0,.92);display:flex;align-items:center;justify-content:center;padding:24px;opacity:0;visibility:hidden;transition:opacity .25s,visibility .25s}
+#md.show{opacity:1;visibility:visible}
+#md>div{max-width:560px;width:100%;background:var(--color-void);padding:var(--s36);border-radius:var(--r)}
+#md h2{margin-bottom:var(--s18)}
+#md p{margin-bottom:var(--s36)}
+#md .lk+.lk{margin-left:var(--s24);background:none}
+
+/* reveal */
+.js .rv{opacity:0;transform:translateY(18px);transition:opacity .9s ease,transform .9s ease}
+.js .rv.on{opacity:1;transform:none}
+
+@media (max-width:900px){
+  #hero .sp{display:block;height:30svh;min-height:220px}
+  #hero{align-items:flex-start;padding-top:calc(var(--s96) + 12px)}
+  .sh{grid-template-columns:1fr;gap:var(--s30)}
+  .pr3,.c3{grid-template-columns:1fr}
+  .c3{margin-top:var(--s60)}
+  .sv{grid-template-columns:1fr}
+  .pl{grid-template-columns:1fr;margin:0 calc(var(--s18) * -1)}
+  .plan{padding:var(--s24) var(--s18)}
+    .n{gap:var(--s60)}
+  .hs{margin-top:var(--s36)}
+  #hero .g > div:first-child{padding-bottom:0}
+}
+@media (max-width:480px){.btn{padding:12px 14px;font-size:12px;white-space:nowrap}.logo{font-size:18px}.hm{display:none}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}.js .rv{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<canvas id="fx" aria-hidden="true"></canvas>
+
+<header><div class="hb">
+  <a class="logo" href="#hero" aria-label="AUREUM — на главную">
+    <svg viewBox="0 0 32 32" aria-hidden="true"><defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8052ff"/><stop offset="1" stop-color="#15846e"/></linearGradient></defs><path d="M16 3 29 27H3z" fill="url(#lg)"/><path d="M16 12 22 24H10z" fill="#000"/></svg>
+    <span>AUREUM</span>
+  </a>
+  <div class="hr">
+    <button class="nl" id="mb" type="button" aria-expanded="false" aria-controls="menu">Меню</button>
+    <a class="btn" id="hc" href="https://t.me/BOPHAMETEAM" target="_blank" rel="noopener"><span class="hm">Написать в </span>Telegram</a>
+  </div>
+</div></header>
+
+<nav id="menu" aria-label="Главное меню" aria-hidden="true">
+<button id="mc" type="button">Закрыть</button>
+<ol>
+<li><a href="#hero"><span>00</span>Главная</a></li>
+<li><a href="#about"><span>01</span>О нас</a></li>
+<li><a href="#services"><span>02</span>Услуги</a></li>
+<li><a href="#pricing"><span>03</span>Тарифы</a></li>
+<li><a href="#offer"><span>04</span>Предложение</a></li>
+<li><a href="#contacts"><span>05</span>Контакты</a></li>
+</ol></nav>
+
+<main>
+<section id="hero"><div class="wrap"><div class="g">
+<h1>Сайты и боты, которые продают, пока вы спите</h1>
+<div class="sp" id="sp" aria-hidden="true"></div>
+<div class="hs"><span class="tag">Открыты для проектов</span><p>Создаём сайты, Telegram-ботов и воронки продаж, которые превращают посетителей в клиентов. Команда из трёх специалистов — без посредников, менеджеров-передатчиков и раздутых смет.</p><a class="lk" href="#contacts">Обсудить задачу ↗</a></div>
+</div></div></section>
+
+<section id="about"><div class="wrap sh rv">
+<div><span class="tag">01 / О нас</span></div>
+<div>
+<p class="man" style="color:var(--color-bone-white)">Нас трое. Мы делаем сайты и ботов, за которые не стыдно перед клиентом.</p>
+<div class="pr3">
+<div><h3>Погружаемся в ваш бизнес, а не в шаблон.</h3><p>Прежде чем рисовать первый экран, разбираемся, кто ваш клиент, что он боится и за что платит. Дизайн — следствие, а не отправная точка.</p></div>
+<div><h3>Каждый проект делает следующий сильнее.</h3><p>Мы не стоим на месте: новый инструмент, новая связка, новая воронка — всё, что реально приносит заявки, идёт в работу. Опыт копится не в презентациях, а в запущенных проектах.</p></div>
+<div><h3>Решаем задачу, а не «рисуем красиво».</h3><p>Иногда бизнесу нужен не сайт, а Telegram-бот. Иногда — воронка на существующем лендинге. Мы честно скажем, что даст результат, даже если это меньше нашей прибыли.</p></div>
+</div></div></div></section>
+
+<section id="why"><div class="wrap rv">
+<span class="tag">02 / Зачем сайт</span>
+<p class="q" style="margin-top:24px;color:var(--color-bone-white)">Сайт — это упаковка товара. Плохая упаковка обесценивает даже хороший продукт.</p>
+<div class="c3">
+<div><h3>Первое впечатление решает за 3 секунды.</h3><p>Столько времени клиент тратит, чтобы понять: «мне тут доверяют или нет». Аккуратный сайт выигрывает этот момент ещё до первого созвона.</p></div>
+<div><h3>Доверие, которое поднимает цену.</h3><p>Понятный сайт выделяет вас среди конкурентов и позволяет продавать дороже — без скидок и уговоров. Люди платят за ощущение надёжности.</p></div>
+<div><h3>Продажи без выходных и менеджеров.</h3><p>Сайт рассказывает о продукте, отвечает на вопросы и собирает заявки, пока вы спите. Каждый посетитель — потенциальный клиент, а не потерянный трафик.</p></div>
+</div></div></section>
+
+<section id="services"><div class="wrap sh rv">
+<div><span class="tag">03 / Услуги</span></div>
+<div>
+<h2 style="margin-bottom:60px">Чем мы можем помочь</h2>
+<ul class="sv">
+<li><span class="tag">a</span><h3>Сайт с нуля</h3><p>Лендинг или многостраничник под ключ: структура, дизайн, вёрстка, запуск. Собираем сайт, который продаёт, а не просто «есть».</p></li>
+<li><span class="tag">b</span><h3>Редизайн сайта</h3><p>Обновляем внешний вид и структуру старого сайта, сохраняя тексты и адрес. Клиенты видят современный сайт — конверсия растёт без переезда.</p></li>
+<li><span class="tag">c</span><h3>Telegram-боты</h3><p>Приём заявок, каталог, оплата, рассылки. Бот работает вместо менеджера — отвечает мгновенно, не устаёт и не теряет заявки.</p></li>
+<li><span class="tag">d</span><h3>Воронки продаж</h3><p>Путь клиента от первого касания до оплаты: цепочки сообщений, прогрев, точки возврата. Превращаем «интересно» в «оплатил».</p></li>
+<li><span class="tag">e</span><h3>Доработка и поддержка</h3><p>Правки, новые блоки, скорость, базовое SEO. Остаёмся на связи после запуска — сайт не умирает через месяц.</p></li>
+</ul></div></div></section>
+
+<section id="nums" aria-label="Цифры"><div class="wrap rv"><div class="n">
+<div><b>3</b><span>специалиста — работают над вашим проектом напрямую</span></div><div><b>24/7</b><span>на связи — отвечаем в Telegram в течение часа</span></div></div></div></section>
+
+<section id="pricing"><div class="wrap rv">
+<span class="tag">04 / Тарифы</span>
+<h2 style="margin:24px 0 60px">Цены без сюрпризов</h2>
+<div class="pl" role="group" aria-label="Выбор тарифа">
+<button class="plan" type="button" aria-pressed="false" data-plan="basic" data-name="Базовый"><span class="tag">01</span><h3>Базовый</h3><div class="pc">$80<small> · ≈7 500 ₽</small></div><p class="pd">Для тех, кому нужна первая рабочая витрина.</p><ul><li>сайт</li><li>адаптив</li><li>базовое SEO</li></ul><span class="pk"><span class="p0">Выбрать</span><span class="p1">Выбрано ✓</span></span></button>
+<button class="plan" type="button" aria-pressed="false" data-plan="optimal" data-name="Оптимальный"><span class="tag">02</span><h3>Оптимальный</h3><div class="pc">$200<small> · ≈18 500 ₽</small></div><p class="pd">Для тех, кто хочет собирать заявки сразу.</p><ul><li>сайт</li><li>Telegram-бот</li><li>заявки в Telegram</li><li>поддержка 1 месяц</li></ul><span class="pk"><span class="p0">Выбрать</span><span class="p1">Выбрано ✓</span></span></button>
+<button class="plan" type="button" aria-pressed="false" data-plan="turnkey" data-name="Под ключ"><span class="tag">03</span><h3>Под ключ</h3><div class="pc">$400<small> · ≈37 000 ₽</small></div><p class="pd">Для тех, кто хочет систему продаж, а не просто страницу.</p><ul><li>сайт</li><li>Telegram-бот</li><li>воронка продаж</li><li>ведение 3 месяца</li></ul><span class="pk"><span class="p0">Выбрать</span><span class="p1">Выбрано ✓</span></span></button>
+</div>
+<p class="pn">Оплата через <b>Telegram Wallet</b>. Детали и сроки фиксируем до старта. Нужен редизайн или нестандартная задача — назовём цену после короткого разговора.</p>
+<p class="pcta"><a class="btn" href="#contacts" id="planCta">Оставить заявку ↗</a></p>
+</div></section>
+
+<section id="offer"><div class="wrap rv">
+<span class="tag">05 / Стартовое предложение</span>
+<p class="q" style="margin-top:24px;color:var(--color-bone-white)">Мы только начинаем. Первым трём проектам — скидка 50% в обмен на честный отзыв и право показать работу.</p>
+<div class="c3">
+<div><h3>Скидка 50%</h3><p>На любой тариф. Фиксируем цену до старта — без сюрпризов.</p></div>
+<div><h3>Взамен — отзыв</h3><p>Честный, с вашими словами. Без правок с нашей стороны.</p></div>
+<div><h3>Право показать</h3><p>Скриншот и короткое описание проекта. Без раскрытия коммерческой тайны.</p></div>
+</div>
+<p class="pcta"><a class="btn" href="https://t.me/BOPHAMETEAM" target="_blank" rel="noopener">Забрать одно из трёх мест ↗</a></p>
+</div></section>
+
+<section id="contacts"><div class="wrap rv">
+<span class="tag">06 / Контакты</span>
+<h2>Давайте работать вместе</h2>
+<div class="cl"><a href="https://t.me/BOPHAMETEAM" target="_blank" rel="noopener">Telegram ↗</a><a href="mailto:m85261135@gmail.com?subject=%D0%9D%D1%83%D0%B6%D0%BD%D0%B0%20%D0%BA%D0%BE%D0%BD%D1%81%D1%83%D0%BB%D1%8C%D1%82%D0%B0%D1%86%D0%B8%D1%8F">Email ↗</a></div>
+<p class="cs">В Telegram отвечаем в течение часа. Первая консультация — бесплатно.</p>
+<p id="planNote" aria-live="polite">Выбран тариф: <span id="planName"></span></p>
+</div></section>
+</main>
+
+<footer><div class="wrap fb">
+<div><div class="logo"><svg viewBox="0 0 32 32" aria-hidden="true"><defs><linearGradient id="lg2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8052ff"/><stop offset="1" stop-color="#15846e"/></linearGradient></defs><path d="M16 3 29 27H3z" fill="url(#lg2)"/><path d="M16 12 22 24H10z" fill="#000"/></svg><span>AUREUM</span></div><span class="cap">© 2026 AUREUM</span></div>
+<nav aria-label="Ссылки">
+<a href="https://t.me/demo_aureum_bot" target="_blank" rel="noopener" class="bt">Попробовать нашего бота</a>
+<button type="button" id="thx" class="bt" aria-haspopup="dialog">Спасибо за просмотр</button>
+<a href="https://t.me/BOPHAMETEAM" target="_blank" rel="noopener">Telegram</a>
+<a href="mailto:m85261135@gmail.com">Email</a></nav>
+</div></footer>
+
+<div id="bar"><a href="https://t.me/BOPHAMETEAM" target="_blank" rel="noopener"><span>Написать в Telegram</span><span>↗</span></a></div>
+
+<div id="md" role="dialog" aria-modal="true" aria-labelledby="mt" aria-hidden="true"><div>
+<h2 id="mt">Спасибо!</h2><p>Рады, что заглянули. Если есть задача — напишите нам в Telegram, ответим в течение часа.</p>
+<a class="lk" href="https://t.me/BOPHAMETEAM" target="_blank" rel="noopener">Написать в Telegram ↗</a><button class="lk" type="button" id="mx">Закрыть</button></div></div>
+
+<script>
+(()=>{
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const rm=matchMedia('(prefers-reduced-motion:reduce)').matches;
+
+/* reveal */
+const rv=$$('.rv');
+if('IntersectionObserver' in window&&!rm){
+  const io=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('on');io.unobserve(x.target)}}),{threshold:.1});
+  rv.forEach(r=>io.observe(r));
+}else rv.forEach(r=>r.classList.add('on'));
+
+/* constellation: morphs by section (0 brain, 1 services, 2 pricing, 3 dot) */
+const cv=$('#fx'),cx=cv.getContext('2d');
+const COL=['#8052ff','#8052ff','#ffb829','#15846e','#15846e','#d63fa6','#3b6bff'];
+let W=0,H=0,dpr=1,mobile=false,B=[],A=[],px=0,py=0,spY=0,dim=1,morph=0,morphTarget=0,ang=0,lastT=0,rotCur=1;
+const rnd=Math.random,lerp=(a,b,t)=>a+(b-a)*t,c01=v=>v<0?0:v>1?1:v;
+function brainPoint(){
+  const s=rnd()<.5?-1:1;
+  let u=rnd()*2-1,th=rnd()*Math.PI*2,r=Math.sqrt(1-u*u);
+  let dx=r*Math.cos(th),dy=u,dz=r*Math.sin(th);
+  const w=1+.09*Math.sin(dx*9+dy*7)+.07*Math.sin(dz*8-dy*5);
+  const k=.84+.16*Math.pow(rnd(),.5);
+  let x=s*.2+dx*.62*w*k,y=dy*.72*w*k-.04*Math.abs(dx),z=dz*.78*w*k;
+  if(Math.abs(x)<.035&&y>-.1)x+=s*.07;
+  return {x,y,z};
+}
+function servicesPoint(i){
+  const c=i%5,an=(c/5)*Math.PI*2-Math.PI/2,x0=Math.cos(an)*.55,y0=Math.sin(an)*.55;
+  const a=rnd()*Math.PI*2,r=Math.pow(rnd(),.6)*.18;
+  return {x:x0+Math.cos(a)*r,y:y0+Math.sin(a)*r,z:(rnd()-.5)*.3};
+}
+function pricingPoint(i){
+  const x0=((i%3)-1)*.5,y=(rnd()-.5)*1.1,a=rnd()*Math.PI*2,r=Math.pow(rnd(),.7)*.12;
+  return {x:x0+Math.cos(a)*r,y,z:Math.sin(a)*r};
+}
+function offerPoint(){
+  const a=rnd()*Math.PI*2,b=rnd()*Math.PI*2,r=Math.pow(rnd(),1.6)*.12;
+  return {x:Math.cos(a)*Math.cos(b)*r,y:Math.sin(a)*Math.cos(b)*r,z:Math.sin(b)*r};
+}
+function build(){
+  mobile=innerWidth<900;
+  const N=mobile?1100:2800,M=mobile?80:280;
+  B=[];A=[];
+  for(let i=0;i<N;i++)B.push({base:brainPoint(),svc:servicesPoint(i),pri:pricingPoint(i),off:offerPoint(),c:COL[(rnd()*COL.length)|0],a:rnd()*6.28,sp:(rnd()-.5)*.6,sz:2.2+rnd()*3.2});
+  for(let i=0;i<M;i++)A.push({x:rnd(),y:rnd(),vx:(rnd()-.5)*.004,vy:(rnd()-.5)*.004,c:COL[(rnd()*COL.length)|0],a:rnd()*6.28,sz:3+rnd()*5});
+}
+function size(){
+  dpr=Math.min(devicePixelRatio||1,2);W=innerWidth;H=innerHeight;
+  cv.width=W*dpr;cv.height=H*dpr;cx.setTransform(dpr,0,0,dpr,0,0);
+}
+function tri(x,y,s,a){
+  cx.moveTo(x+Math.cos(a)*s,y+Math.sin(a)*s);
+  cx.lineTo(x+Math.cos(a+2.094)*s,y+Math.sin(a+2.094)*s);
+  cx.lineTo(x+Math.cos(a+4.189)*s,y+Math.sin(a+4.189)*s);
+  cx.closePath();
+}
+const SC=[1,.9,1,.55],RS=[1,1.6,.6,2.2];
+const at=(arr,m)=>{const i=Math.min(3,Math.floor(m)),f=m-i;return lerp(arr[i],arr[Math.min(3,i+1)],f)};
+function paint(t){
+  const dt=lastT?Math.min(50,t-lastT):0;lastT=t;
+  if(rm)morph=morphTarget;else morph+=(morphTarget-morph)*.04;
+  cx.clearRect(0,0,W,H);
+  cx.lineWidth=1.2;
+  const byC={};
+  for(const p of A){
+    if(!rm){p.x+=p.vx*.1;p.y+=p.vy*.1;if(p.x<0)p.x=1;if(p.x>1)p.x=0;if(p.y<0)p.y=1;if(p.y>1)p.y=0}
+    (byC[p.c]=byC[p.c]||[]).push(p);
+  }
+  cx.globalAlpha=.15;
+  for(const c in byC){cx.strokeStyle=c;cx.beginPath();for(const p of byC[c])tri(p.x*W,p.y*H,p.sz,p.a+t*.0003);cx.stroke()}
+  const cxp=mobile?W*.5:W*.72,cyp=mobile?Math.max(spY-scrollY,H*.4):H*.52;
+  const R=(mobile?Math.min(W,H)*.42:Math.min(W*.5,H)*.6)*at(SC,morph);
+  rotCur+=(at(RS,morph)-rotCur)*.05;
+  if(!rm)ang+=dt*.00014*rotCur;
+  const cs=Math.cos(ang),sn=Math.sin(ang),tilt=-.18,ct=Math.cos(tilt),st=Math.sin(tilt);
+  const m1=c01(morph),m2=c01(morph-1),m3=c01(morph-2);
+  const g={};
+  for(const p of B){
+    let x=lerp(p.base.x,p.svc.x,m1),y=lerp(p.base.y,p.svc.y,m1),z=lerp(p.base.z,p.svc.z,m1);
+    if(morph>1){x=lerp(x,p.pri.x,m2);y=lerp(y,p.pri.y,m2);z=lerp(z,p.pri.z,m2)}
+    if(morph>2){x=lerp(x,p.off.x,m3);y=lerp(y,p.off.y,m3);z=lerp(z,p.off.z,m3)}
+    const rx=x*cs+z*sn+px*.06,rz=-x*sn+z*cs;
+    const y2=y*ct-rz*st+py*.06,z2=y*st+rz*ct;
+    const per=1/(1.9-z2*.6),b=z2>.3?2:z2>-.3?1:0;
+    const k=(g[p.c+b]=g[p.c+b]||{c:p.c,b,l:[]});
+    k.l.push(cxp+rx*R*per*1.55,cyp+y2*R*per*1.55,p.sz*per*(mobile?.8:1),p.a+t*p.sp*.001);
+  }
+  const al=[.35,.65,1];let gi=0;
+  for(const key in g){
+    const k=g[key],pulse=k.b===2&&!rm?.85+.15*Math.sin(t*.0008+gi*.7):1;gi++;
+    cx.globalAlpha=al[k.b]*dim*pulse*(mobile?.8:1);cx.strokeStyle=k.c;cx.beginPath();
+    for(let i=0;i<k.l.length;i+=4)tri(k.l[i],k.l[i+1],k.l[i+2],k.l[i+3]);
+    if(k.b===2&&!mobile){cx.shadowBlur=6;cx.shadowColor=k.c}
+    cx.stroke();cx.shadowBlur=0;
+  }
+  cx.globalAlpha=1;
+}
+let run=true;
+function loop(t){paint(t);if(run&&!rm)requestAnimationFrame(loop)}
+const mark=()=>{const b=$('#sp').getBoundingClientRect();spY=b.top+scrollY+b.height/2};
+function init(){size();build();mark();if(rm)paint(0)}
+init();
+addEventListener('load',mark);if(document.fonts)document.fonts.ready.then(mark);
+let rt;addEventListener('resize',()=>{clearTimeout(rt);rt=setTimeout(()=>{init()},150)});
+addEventListener('pointermove',e=>{if(!rm){px=e.clientX/W-.5;py=e.clientY/H-.5}},{passive:true});
+/* beyond the first screen the scene dims so text stays readable */
+addEventListener('scroll',()=>{dim=1-.6*c01((scrollY-innerHeight*.5)/(innerHeight*.5));if(rm)paint(0)},{passive:true});
+const MS={hero:0,about:0,why:0,services:1,pricing:2,offer:3,contacts:3};
+if('IntersectionObserver' in window){
+  const mo=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting&&e.target.id in MS){morphTarget=MS[e.target.id];if(rm)paint(0)}}),{threshold:.25,rootMargin:'-20% 0px -20% 0px'});
+  Object.keys(MS).forEach(id=>{const el=document.getElementById(id);if(el)mo.observe(el)});
+}
+if(!rm){requestAnimationFrame(loop);document.addEventListener('visibilitychange',()=>{run=!document.hidden;if(run)requestAnimationFrame(loop)})}
+
+/* bottom bar */
+const bar=$('#bar');addEventListener('scroll',()=>{bar.classList.toggle('show',scrollY>500);document.body.classList.toggle('sc',scrollY>40)},{passive:true});
+
+/* only one filled CTA per screen: nav pill turns ghost while the pricing CTA is visible */
+if('IntersectionObserver' in window){
+  const vis=new Set(),io2=new IntersectionObserver(e=>{e.forEach(x=>x.isIntersecting?vis.add(x.target):vis.delete(x.target));document.body.classList.toggle('cta2',vis.size>0)},{threshold:0});
+  $$('#planCta,#offer .btn').forEach(b=>io2.observe(b));
+}
+
+/* plans */
+const cards=$$('.plan'),pn=$('#planNote'),pnn=$('#planName');let sel=null;
+function render(){
+  cards.forEach(c=>c.setAttribute('aria-pressed',c.dataset.plan===sel));
+  const cur=cards.find(c=>c.dataset.plan===sel);
+  pn.classList.toggle('show',!!cur);if(cur)pnn.textContent=cur.dataset.name;
+  const txt='Привет! Нужна консультация'+(cur?'. Интересует тариф «'+cur.dataset.name+'»':'');
+  $$('a[href^="https://t.me/BOPHAMETEAM"]').forEach(a=>a.href='https://t.me/BOPHAMETEAM?text='+encodeURIComponent(txt));
+  try{const u=new URL(location.href);if(sel)u.searchParams.set('plan',sel);else u.searchParams.delete('plan');history.replaceState(null,'',u)}catch(e){}
+}
+cards.forEach(c=>c.addEventListener('click',()=>{sel=sel===c.dataset.plan?null:c.dataset.plan;render()}));
+const q=new URLSearchParams(location.search).get('plan');if(cards.some(c=>c.dataset.plan===q))sel=q;
+render();
+
+/* menu */
+const menu=$('#menu'),mb=$('#mb'),mc=$('#mc');
+menu.inert=true;
+function setMenu(o,focus=true){menu.classList.toggle('open',o);menu.inert=!o;menu.setAttribute('aria-hidden',!o);mb.setAttribute('aria-expanded',o);
+  if(o)setTimeout(()=>mc.focus({preventScroll:true}),30);else if(focus)mb.focus({preventScroll:true})}
+mb.addEventListener('click',()=>setMenu(true));mc.addEventListener('click',()=>setMenu(false));
+$$('#menu a').forEach(a=>a.addEventListener('click',()=>setMenu(false,false)));
+
+/* modal */
+const md=$('#md'),tb=$('#thx'),mx=$('#mx');md.inert=true;
+function setMd(o){md.classList.toggle('show',o);md.inert=!o;md.setAttribute('aria-hidden',!o);
+  if(o)setTimeout(()=>mx.focus({preventScroll:true}),30);else tb.focus({preventScroll:true})}
+tb.addEventListener('click',()=>setMd(true));mx.addEventListener('click',()=>setMd(false));
+md.addEventListener('click',e=>{if(e.target===md)setMd(false)});
+
+/* Escape + focus trap */
+document.addEventListener('keydown',e=>{
+  const box=menu.classList.contains('open')?menu:md.classList.contains('show')?md:null;if(!box)return;
+  if(e.key==='Escape'){box===menu?setMenu(false):setMd(false);return}
+  if(e.key!=='Tab')return;
+  const f=[...box.querySelectorAll('a,button')].filter(x=>x.offsetParent!==null||getComputedStyle(x).position==='absolute');if(!f.length)return;
+  const i=f.indexOf(document.activeElement);
+  if(e.shiftKey&&i<=0){e.preventDefault();f[f.length-1].focus()}else if(!e.shiftKey&&i===f.length-1){e.preventDefault();f[0].focus()}
+});
+
+/* Telegram Mini App */
+const tg=window.Telegram&&window.Telegram.WebApp;
+if(tg){const safe=f=>{try{f()}catch(e){}};safe(()=>tg.ready());safe(()=>tg.expand());
+  document.addEventListener('click',e=>{const a=e.target.closest('a[href^="https://t.me/"]');
+    if(!a||typeof tg.openTelegramLink!=='function')return;e.preventDefault();
+    try{tg.openTelegramLink(a.href)}catch(err){window.open(a.href,'_blank')}})}
+})();
+</script>
+</body>
+</html>
