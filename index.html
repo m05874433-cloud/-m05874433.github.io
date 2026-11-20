@@ -1,459 +1,400 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="referrer" content="strict-origin-when-cross-origin">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://telegram.org; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>AUREUM — сайты, Telegram-боты и воронки продаж</title>
-<meta name="description" content="AUREUM: делаем сайты, редизайн, Telegram-ботов и воронки продаж.">
-<meta name="theme-color" content="#000000">
-<script>document.documentElement.className='js'</script>
-<script src="https://telegram.org/js/telegram-web-app.js"></script>
+<meta name="description" content="AUREUM: делаем сайты, Telegram-ботов и воронки продаж. Команда из трёх разработчиков.">
+<meta name="theme-color" content="#100904">
+<link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHZpZXdCb3g9JzAgMCAzMiAzMic+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSdnJyB4MT0nMCcgeTE9JzAnIHgyPScxJyB5Mj0nMSc+PHN0b3Agb2Zmc2V0PScwJyBzdG9wLWNvbG9yPScjZmZkMzZiJy8+PHN0b3Agb2Zmc2V0PScxJyBzdG9wLWNvbG9yPScjZGM1MDAwJy8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PHJlY3Qgd2lkdGg9JzMyJyBoZWlnaHQ9JzMyJyByeD0nNycgZmlsbD0nIzEwMDkwNCcvPjxwYXRoIGZpbGw9J3VybCgjZyknIGZpbGwtcnVsZT0nZXZlbm9kZCcgZD0nTTE2IDUuNCAyNi40IDI0LjZINS42ek0xNiAxMi42IDIwLjggMjIuMkgxMS4yeicvPjwvc3ZnPg==" type="image/svg+xml">
+<link rel="icon" href="data:image/png;base64,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" type="image/png" sizes="64x64">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="AUREUM">
+<meta property="og:title" content="AUREUM — сайты, Telegram-боты и воронки продаж">
+<meta property="og:description" content="Делаем сайты, Telegram-ботов и воронки продаж. Команда из трёх разработчиков, без посредников. Тарифы от $80.">
+<meta property="og:locale" content="ru_RU">
+<meta name="color-scheme" content="dark">
+<meta name="format-detection" content="telephone=no">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;400;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap"></noscript>
 <style>
-:root{
-  --color-void:#000000;--color-bone-white:#ffffff;--color-ash-gray:#9a9a9a;--color-silver-mist:#bdbdbd;
-  --color-electric-iris:#8052ff;--color-saffron-spark:#ffb829;--color-deep-verdant:#15846e;
-  --font-ppneuemontreal:"PPNeueMontreal","Inter",system-ui,sans-serif;
-  --s6:6px;--s12:12px;--s18:18px;--s24:24px;--s30:30px;--s36:36px;--s60:60px;--s96:96px;--s120:120px;
-  --r:24px;--pill:9999px;
-  --p120:clamp(60px,9vw,120px);--p96:clamp(60px,7.5vw,96px);
-}
+:root{--cream:#ffedd7;--bg:#100904;--bark:#382416;--cork:#40372e;--drift:#8a7b6a;--ember:#dc5000;--gold:#ffb829;--gold2:#ffd36b;--ft:92px;color-scheme:dark}
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;background:var(--color-void)}
-body{background:var(--color-void);color:var(--color-bone-white);font:200 18px/1.5 var(--font-ppneuemontreal);font-feature-settings:"ss01" on;-webkit-font-smoothing:antialiased;overflow-x:hidden}
-a{color:inherit;text-decoration:none}
-button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;text-align:left}
-ul,ol{list-style:none}
-:focus-visible{outline:2px solid var(--color-saffron-spark);outline-offset:4px;border-radius:6px}
-#fx{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;contain:strict;will-change:contents}
-main,footer,header{position:relative;z-index:1}
-.wrap{max-width:1280px;margin:0 auto;padding:0 clamp(20px,4vw,48px)}
-section{padding:var(--p120) 0}
-#hero{padding-bottom:0}
-#about,#why,#offer,#contacts{padding-block:var(--p120)}
-#services,#pricing{padding-block:var(--p96)}
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%;background:var(--bg)}
+body{background:var(--bg);color:var(--cream);font-family:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;overflow-x:hidden;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+a{color:inherit;text-decoration:none;-webkit-tap-highlight-color:transparent}
+nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;justify-content:space-between;padding:calc(18px + env(safe-area-inset-top,0px)) 24px 18px;font-size:12px;font-weight:500;text-transform:uppercase;pointer-events:none}
+#track{height:2220vh;position:relative}
+.pin{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;background:var(--bg)}
+.stage{position:absolute;top:0;right:0;bottom:0;left:0;perspective:1300px;-webkit-perspective:1300px;pointer-events:none;overflow:hidden}
 
-/* type */
-h1,h2,h3,.q,.big{font-weight:400}
-h1{font-size:clamp(44px,6.8vw,104px);max-width:960px;line-height:1.1;letter-spacing:-.04em}
-h2{font-size:clamp(34px,4.2vw,48px);line-height:1.1;letter-spacing:-.04em}
-h3{font-size:24px;line-height:1.25;letter-spacing:-.02em}
-.q{font-size:clamp(32px,4.8vw,68px);line-height:1.1;letter-spacing:-.04em;max-width:1000px}
-.man{font-size:clamp(34px,4.2vw,48px);line-height:1.1;letter-spacing:-.04em;font-weight:400}
-.tag{display:block;font:600 14px/1.2 var(--font-ppneuemontreal);letter-spacing:.025em;text-transform:uppercase;color:var(--color-saffron-spark)}
-p{color:var(--color-silver-mist)}
-.cap{font-size:12px}
+/* ===== PLATES (анимируются только transform и opacity) ===== */
+.plate{--q:1.8;position:absolute;left:50%;top:50%;width:calc(340px*var(--q));height:calc(84px*var(--q));margin:calc(-42px*var(--q)) 0 0 calc(-170px*var(--q));padding:calc(7px*var(--q)) calc(18px*var(--q)) 0;border-radius:calc(18px*var(--q));overflow:hidden;
+  background:linear-gradient(165deg,#5b3a22 0%,#33200f 60%,#241508 100%);
+  border:calc(1px*var(--q)) solid rgba(255,237,215,.16);box-shadow:0 calc(14px*var(--q)) calc(30px*var(--q)) calc(-10px*var(--q)) rgba(0,0,0,.8),inset 0 calc(1px*var(--q)) 0 rgba(255,237,215,.28);
+  will-change:transform,opacity;transform:translate3d(0,0,0)}
+.plate::before{content:"";position:absolute;left:0;top:calc(14px*var(--q));bottom:calc(14px*var(--q));width:calc(3px*var(--q));border-radius:0 calc(3px*var(--q)) calc(3px*var(--q)) 0;background:var(--ember)}
+.plate.last{background:linear-gradient(165deg,#e8601a 0%,#b03d00 100%);border-color:rgba(255,237,215,.4)}
+.plate.last::before{background:var(--cream)}
+.hl{position:absolute;top:0;right:0;bottom:0;left:0;border-radius:inherit;background:linear-gradient(120deg,rgba(220,80,0,.55),rgba(255,237,215,.18));opacity:0}
+.row{position:relative;display:flex;align-items:center;gap:calc(12px*var(--q));height:calc(20px*var(--q));font-size:calc(12px*var(--q));font-weight:500;text-transform:uppercase;letter-spacing:.06em}
+.row b{font-weight:500;color:var(--ember);font-size:calc(11px*var(--q))}
+.last .row b{color:var(--cream);opacity:.7}
+.plate small{position:relative;display:block;margin-top:calc(14px*var(--q));font-size:calc(12px*var(--q));line-height:1.35;color:rgba(255,237,215,.62)}
+.last small{color:rgba(255,237,215,.88)}
 
-/* controls */
-.btn{display:inline-block;background:var(--color-electric-iris);color:var(--color-bone-white);font:600 14px/1.2 var(--font-ppneuemontreal);letter-spacing:.025em;text-transform:uppercase;padding:14px 18px;border-radius:var(--r);transition:background .25s,color .25s}
-.btn:hover{filter:brightness(1.12)}
-.lk{display:inline-block;color:var(--color-bone-white);font:400 16px/1.2 var(--font-ppneuemontreal);text-decoration:underline;text-decoration-color:var(--color-saffron-spark);text-underline-offset:8px;text-decoration-thickness:1px;transition:color .2s}
-.lk:hover{color:var(--color-saffron-spark)}
-.nl{font:600 14px/1.2 var(--font-ppneuemontreal);letter-spacing:.025em;text-transform:uppercase;color:var(--color-ash-gray);padding:12px 6px;transition:color .2s}
-.nl:hover{color:var(--color-bone-white)}
-
-/* header */
-header{position:fixed;top:0;left:0;right:0;z-index:20;background:transparent;transition:background .25s}
-body.sc header{background:var(--color-void)}
-.hb{max-width:1280px;margin:0 auto;padding:18px clamp(20px,4vw,48px);display:flex;align-items:center;justify-content:space-between;gap:12px}
-.logo{display:inline-flex;align-items:center;gap:12px;font:400 20px/1 var(--font-ppneuemontreal);letter-spacing:-.02em;color:var(--color-bone-white)}
-.logo svg{width:28px;height:28px}
-.hr{display:flex;align-items:center;gap:12px}
-body.cta2 #hc{background:transparent;color:var(--color-bone-white);padding:14px 18px}
-
-/* hero */
-#hero{min-height:100svh;display:flex;align-items:center;padding:calc(var(--s120) + 24px) 0 0}
-#hero .g{display:block}
-#hero .sp{display:none}
-#hero .wrap{width:100%}
-.hs{margin-top:var(--s60);max-width:420px;display:flex;flex-direction:column;gap:var(--s18);align-items:flex-start}
-
-/* two-col */
-.sh{display:grid;grid-template-columns:minmax(0,.35fr) minmax(0,1fr);gap:var(--s60)}
-.pr3,.c3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--s60) var(--s36)}
-.pr3 h3,.c3 h3{font-size:clamp(20px,2vw,24px);margin-bottom:var(--s12)}
-.c3{margin-top:var(--s96)}
-.pr3{margin-top:var(--s60)}
-
-/* services */
-.sv{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--s60) var(--s36)}
-.sv h3{font-size:clamp(27px,3vw,36px);line-height:1.2;letter-spacing:-.03em;margin:var(--s12) 0}
-
-/* numbers */
-.n{display:flex;gap:var(--s96);flex-wrap:wrap;align-items:flex-end}
-.n b{display:block;font-weight:400;font-size:clamp(76px,11vw,128px);line-height:1;letter-spacing:-.04em}
-.n div{max-width:340px}
-.n span{display:block;margin-top:var(--s12);color:var(--color-silver-mist)}
-
-/* pricing */
-.pl{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--s18);margin:0 calc(var(--s30) * -1)}
-.plan{display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-start;width:100%;padding:var(--s30);border-radius:var(--r);transition:box-shadow .25s,background .3s;background:transparent}
-.plan:hover h3{color:var(--color-saffron-spark)}
-.plan[aria-pressed="true"]{background:rgba(128,82,255,.18);box-shadow:inset 0 0 0 1px rgba(128,82,255,.55)}
-.plan .tag{margin-bottom:var(--s18)}
-.pc{font-size:clamp(56px,6vw,78px);font-weight:400;letter-spacing:-.04em;line-height:1.1;margin:var(--s12) 0 var(--s18)}
-.pc small{font-size:18px;font-weight:200;letter-spacing:0;color:var(--color-ash-gray)}
-.pd{margin-bottom:var(--s18)}
-.plan ul{display:grid;gap:6px;color:var(--color-silver-mist);margin-bottom:var(--s24);list-style:none}
-.pk{margin-top:auto;font:600 14px/1.2 var(--font-ppneuemontreal);letter-spacing:.025em;text-transform:uppercase;color:var(--color-ash-gray)}
-.plan[aria-pressed="true"] .pk{color:var(--color-bone-white)}
-.p1,.plan[aria-pressed="true"] .p0{display:none}
-.plan[aria-pressed="true"] .p1{display:inline}
-.pn{margin-top:var(--s60);max-width:640px}
-.pn b{font-weight:400;color:var(--color-bone-white)}
-.pcta{margin-top:var(--s30)}
-
-
-/* contacts */
-#contacts h2{font-size:clamp(48px,8.8vw,112px);line-height:1.1;letter-spacing:-.04em;margin-top:var(--s24)}
-#planNote{display:none;margin-top:var(--s30);color:var(--color-saffron-spark)}
-#planNote.show{display:block}
-.cl{display:flex;gap:var(--s18) var(--s60);flex-wrap:wrap;margin-top:var(--s60)}
-.cl a{font-size:clamp(36px,5vw,64px);font-weight:400;letter-spacing:-.04em;line-height:1.1;transition:color .2s}
-.cl a:hover{color:var(--color-saffron-spark)}
-.cs{margin-top:var(--s36)}
-
-/* footer */
-footer{padding:var(--s60) 0 var(--s120)}
-.fb{display:flex;justify-content:space-between;gap:var(--s36);flex-wrap:wrap;align-items:flex-end}
-.fb .logo{display:flex;margin-bottom:var(--s12)}
-.fb>div{color:var(--color-ash-gray)}
-.fb nav{display:flex;gap:var(--s12);flex-wrap:wrap}
-.fb nav a,.fb nav button{font:400 14px/1.2 var(--font-ppneuemontreal);letter-spacing:.025em;text-transform:uppercase;color:var(--color-ash-gray);padding:12px 18px;border-radius:var(--pill);transition:color .2s,background .2s}
-.fb nav a:hover,.fb nav button:hover{color:var(--color-bone-white);background:rgba(128,82,255,.18)}
-.fb nav .bt{color:var(--color-bone-white)}
-
-/* bar */
-#bar{position:fixed;left:0;right:0;bottom:0;z-index:15;background:var(--color-void);transform:translateY(110%);transition:transform .35s;padding:18px clamp(20px,4vw,48px) calc(18px + env(safe-area-inset-bottom,0px))}
-#bar.show{transform:none}
-#bar a{display:flex;justify-content:center;gap:12px;font:400 14px/1.2 var(--font-ppneuemontreal);letter-spacing:.025em;text-transform:uppercase}
-#bar a span:last-child{color:var(--color-saffron-spark)}
-
-/* menu */
-#menu{position:fixed;inset:0;z-index:30;background:var(--color-void);padding:calc(var(--s96)) clamp(20px,4vw,48px) var(--s60);opacity:0;visibility:hidden;transition:opacity .3s,visibility .3s;overflow:auto}
-#menu.open{opacity:1;visibility:visible}
-#mc{position:absolute;top:18px;right:clamp(20px,4vw,48px);font:600 14px/1.2 var(--font-ppneuemontreal);letter-spacing:.025em;text-transform:uppercase;color:var(--color-ash-gray);padding:12px 6px}
-#mc:hover{color:var(--color-electric-iris);text-decoration:underline;text-decoration-color:var(--color-saffron-spark);text-underline-offset:8px}
-#menu ol{max-width:1280px;margin:0 auto}
-#menu a{display:flex;align-items:baseline;gap:var(--s24);font-size:clamp(42px,7.5vw,78px);font-weight:400;letter-spacing:-.04em;line-height:1.2;color:var(--color-bone-white);transition:color .2s}
-#menu a:hover{color:var(--color-saffron-spark)}
-#menu a span{font:400 12px/1 "JetBrains Mono",ui-monospace,monospace;letter-spacing:0;color:var(--color-electric-iris);min-width:24px}
-
-/* modal */
-#md{position:fixed;inset:0;z-index:40;background:rgba(0,0,0,.92);display:flex;align-items:center;justify-content:center;padding:24px;opacity:0;visibility:hidden;transition:opacity .25s,visibility .25s}
-#md.show{opacity:1;visibility:visible}
-#md>div{max-width:560px;width:100%;background:var(--color-void);padding:var(--s36);border-radius:var(--r)}
-#md h2{margin-bottom:var(--s18)}
-#md p{margin-bottom:var(--s36)}
-#md .lk+.lk{margin-left:var(--s24);background:none}
-
-/* reveal */
-.js .rv{opacity:0;transform:translateY(18px);transition:opacity .9s ease,transform .9s ease}
-.js .rv.on{opacity:1;transform:none}
-
+/* ===== TEXTS ===== */
+.t{position:absolute;opacity:0;z-index:5;will-change:opacity,transform}
+.tag{font-size:12px;font-weight:500;text-transform:uppercase;margin-bottom:18px;color:var(--drift)}
+h1{font-size:clamp(51px,10vw,120px);line-height:.9;font-weight:500;text-transform:uppercase}
+.hero{left:41px;top:104px}
+.card{left:41px;bottom:68px;width:min(380px,calc(100% - 82px));border-radius:12px;background:rgba(56,36,22,.85);padding:18px}
+.card h3{font-size:14px;text-transform:uppercase;font-weight:500;line-height:1.2}
+.card hr{border:0;border-top:1px dashed var(--cork);margin:12px 0}
+.card p{font-size:12px;line-height:1.4}
+.mid,.gt{left:0;right:0;text-align:center;padding:0 24px}
+.mid{top:clamp(60px,12vh,92px)}
+.gt{bottom:calc(60px + env(safe-area-inset-bottom,0px))}
+.mid h2,.gt h2{font-size:clamp(20px,min(3.2vw,5.6vh),40px);line-height:1;font-weight:500;text-transform:uppercase}
+.mid p,.gt p{margin:12px auto 0;max-width:520px;font-size:14px;line-height:1.35;color:rgba(255,237,215,.7)}
+.sd{width:min(26vw,360px)}
+.sd .n,.pn .n{font-size:10px;font-weight:500;text-transform:uppercase;color:var(--drift);display:block;margin-bottom:8px}
+.sd h3{font-size:20px;line-height:1.1;font-weight:500;text-transform:uppercase;margin-bottom:8px}
+.sd p{font-size:15px;line-height:1.3;color:rgba(255,237,215,.78)}
+.pn{top:50%}
+.pn h3{font-size:28px;line-height:1.05;font-weight:500;text-transform:uppercase;margin-bottom:14px}
+.pn p{font-size:17px;line-height:1.4;color:rgba(255,237,215,.85)}
+.pn ul{list-style:none;margin-top:16px;display:flex;flex-wrap:wrap;gap:8px}
+.pn li{font-size:12px;border:1px dashed var(--drift);border-radius:20px;padding:6px 12px}
+.btn{display:inline-block;border-radius:36px;padding:14px 26px;background:var(--bark);font-size:14px;font-weight:500;text-transform:uppercase;touch-action:manipulation}
+@media (hover:hover){.btn:hover{outline:1px dashed var(--cream)}}
+.cue{position:absolute;left:0;right:0;text-align:center;font-size:10px;font-weight:500;text-transform:uppercase;color:var(--drift);z-index:5;bottom:calc(24px + env(safe-area-inset-bottom,0px))}
+.cue::after{content:"";display:block;height:28px;border-left:1px dashed var(--drift);width:0;margin:8px auto 0}
 @media (max-width:900px){
-  #hero .sp{display:block;height:30svh;min-height:220px}
-  #hero{align-items:flex-start;padding-top:calc(var(--s96) + 12px)}
-  .sh{grid-template-columns:1fr;gap:var(--s30)}
-  .pr3,.c3{grid-template-columns:1fr}
-  .c3{margin-top:var(--s60)}
-  .sv{grid-template-columns:1fr}
-  .pl{grid-template-columns:1fr;margin:0 calc(var(--s18) * -1)}
-  .plan{padding:var(--s24) var(--s18)}
-    .n{gap:var(--s60)}
-  .hs{margin-top:var(--s36)}
-  #hero .g > div:first-child{padding-bottom:0}
+  nav{padding:calc(14px + env(safe-area-inset-top,0px)) 14px 12px}
+  .hero{left:18px;top:84px}.card{left:18px;bottom:calc(70px + env(safe-area-inset-bottom,0px));width:calc(100% - 36px)}
+  .mid{top:66px}.mid h2,.gt h2{font-size:18px}.mid p,.gt p{font-size:12px;margin-top:8px}
+  .sd,.pn{left:16px;right:16px;top:auto;bottom:calc(58px + env(safe-area-inset-bottom,0px));width:auto;text-align:center}
+  .pn{text-align:left;background:rgba(56,36,22,.9);border-radius:14px;padding:14px 16px}
+  .pn h3{font-size:18px;margin-bottom:8px}.pn p{font-size:13.5px;line-height:1.35}
+  .pn ul{margin-top:10px;gap:6px}.pn li{font-size:11px;padding:4px 10px}
+  .sd h3{font-size:18px}.sd p{font-size:14px}
+  .cue{display:none}
 }
-@media (max-width:480px){.btn{padding:12px 14px;font-size:12px;white-space:nowrap}.logo{font-size:18px}.hm{display:none}}
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}.js .rv{opacity:1;transform:none}}
+@media (max-height:520px) and (max-width:900px){.pn p{font-size:12px}}
+
+/* ===== AUREUM: параллакс-фон, финальный экран, футер ===== */
+a:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.bgfx{position:absolute;left:0;right:0;top:-10%;bottom:-10%;pointer-events:none;will-change:transform;
+  background:radial-gradient(ellipse at 50% 55%,#2a190d 0%,rgba(16,9,4,0) 62%)}
+.halo{position:absolute;top:0;right:0;bottom:0;left:0;opacity:0;background:radial-gradient(ellipse at 50% 50%,rgba(255,184,41,.2) 0%,rgba(255,184,41,0) 55%)}
+.final{left:0;right:0;top:0;bottom:0;display:flex;align-items:center;justify-content:center;text-align:center;
+  padding:calc(var(--ft) + env(safe-area-inset-top,0px)) 24px calc(24px + env(safe-area-inset-bottom,0px))}
+.fin{width:100%;max-width:940px}
+.final h2{font-size:clamp(34px,7vw,88px);line-height:.92;font-weight:500;text-transform:uppercase}
+.final .fs{max-width:560px;margin:16px auto 0;font-size:clamp(13px,1.5vw,17px);line-height:1.4;color:rgba(255,237,215,.74)}
+.plans{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:clamp(22px,4.5vh,44px);text-align:left}
+.pc{position:relative;display:block;width:100%;text-align:left;cursor:pointer;font:inherit;color:inherit;-webkit-tap-highlight-color:transparent;-webkit-appearance:none;appearance:none;touch-action:manipulation;
+  padding:16px 18px;border-radius:16px;border:1px solid rgba(255,237,215,.14);background:linear-gradient(165deg,rgba(91,58,34,.5),rgba(36,21,8,.8));
+  transition:translate .4s ease,border-color .4s ease,background .4s ease,box-shadow .4s ease}
+@media (hover:hover){.pc:hover{border-color:rgba(255,184,41,.5)}}
+.pc:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.pc .nm{display:block;font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:.06em;color:var(--drift);transition:color .4s}
+.pc .pr{display:block;margin:8px 0 12px;font-size:clamp(26px,3.2vw,38px);line-height:1;font-weight:500}
+.pc .pr small{display:block;margin-top:4px;font-size:11px;font-weight:400;color:var(--drift)}
+.pc .ls{display:grid;gap:6px;font-size:12px;line-height:1.3;color:rgba(255,237,215,.8)}
+.pc .ls span{position:relative;display:block;padding-left:14px}
+.pc .ls span::before{content:"";position:absolute;left:0;top:.5em;width:5px;height:5px;border-radius:50%;background:var(--ember);transition:background .4s}
+.pc .pk{display:block;margin-top:14px;font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.06em;color:var(--drift);transition:color .4s}
+.pc .p1,.pc[aria-pressed="true"] .p0{display:none}.pc[aria-pressed="true"] .p1{display:inline}
+/* подсвечена выбранная карточка; пока ничего не выбрано — рекомендуемый «Оптимальный» */
+.pc[aria-pressed="true"],.plans:not(.hs) .pc.hot{translate:0 -6px;border-color:var(--gold);background:linear-gradient(165deg,rgba(255,184,41,.18),rgba(56,36,22,.92));box-shadow:0 0 0 1px rgba(255,184,41,.3),0 20px 44px -20px rgba(255,184,41,.5)}
+.pc[aria-pressed="true"] .nm,.pc[aria-pressed="true"] .pk,.plans:not(.hs) .pc.hot .nm{color:var(--gold)}
+.pc[aria-pressed="true"] .ls span::before,.plans:not(.hs) .pc.hot .ls span::before{background:var(--gold)}
+.pnote{margin-top:12px;min-height:1.4em;font-size:12px;color:var(--drift);transition:color .4s}
+.plans.hs+.pnote{color:var(--gold2)}
+.fbtns{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:clamp(20px,3.6vh,34px)}
+.btn.gold{position:relative;color:#1a0f05;background:linear-gradient(135deg,var(--gold2),var(--gold) 55%,#e39a0d);animation:beat 2.4s ease-in-out infinite paused}
+.btn.gold::after{content:"";position:absolute;top:0;right:0;bottom:0;left:0;border-radius:inherit;border:1.5px solid var(--gold);opacity:0;pointer-events:none;animation:ring 2.4s ease-out infinite paused}
+.final.on .btn.gold,.final.on .btn.gold::after{animation-play-state:running}   /* пульс крутится только когда финал виден */
+.btn.ghost{background:transparent;border:1px solid rgba(255,237,215,.35);transition:color .2s,border-color .2s}
+@media (hover:hover){.btn.ghost:hover{outline:0;border-color:var(--gold);color:var(--gold)}}
+@keyframes beat{0%,100%{transform:scale(1)}50%{transform:scale(1.035)}}
+@keyframes ring{0%{transform:scale(1);opacity:.65}70%,100%{transform:scale(1.18,1.55);opacity:0}}
+.ft{position:relative;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 24px;min-height:var(--ft);
+  padding:20px 24px calc(20px + env(safe-area-inset-bottom,0px));border-top:1px dashed var(--cork);background:var(--bg)}
+.flogo{display:flex;align-items:center;gap:10px;font-size:15px;font-weight:500;letter-spacing:.04em}
+.flogo svg{width:22px;height:22px}
+.ft small{display:block;margin-top:6px;font-size:11px;color:var(--drift)}
+.fl{display:flex;gap:6px}
+.fl a{padding:10px 12px;border-radius:20px;font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:.06em;color:var(--drift);transition:color .2s}
+@media (hover:hover){.fl a:hover{color:var(--gold)}}
+@media (max-width:900px){
+  .plate{box-shadow:none}                      /* мобильные: без тяжёлых теней */
+  .final{padding-bottom:calc(16px + env(safe-area-inset-bottom,0px))}
+  .final h2{font-size:clamp(28px,8.5vw,40px)}.final .fs{font-size:12px;margin-top:10px}
+  .plans{gap:8px;margin-top:16px}
+  .pc{padding:12px 10px;border-radius:12px}.pc .nm{font-size:10px}.pc .pr{font-size:22px;margin:6px 0 10px}
+  .pc .pr small{font-size:9.5px}.pc .ls{font-size:11px;gap:5px}.pc .ls span{padding-left:11px}.pc .pk{font-size:9px;margin-top:10px}
+  .pc[aria-pressed="true"],.plans:not(.hs) .pc.hot{box-shadow:none}
+  .final{padding-top:calc(72px + env(safe-area-inset-top,0px))}.pnote{font-size:11px;margin-top:10px}
+  .fbtns{flex-direction:column;align-items:center;gap:10px;margin-top:16px}
+  .fbtns .btn{width:100%;max-width:340px;text-align:center;padding:13px 20px;font-size:13px}
+}
+@media (prefers-reduced-motion:reduce){.btn.gold,.btn.gold::after{animation:none}.pc,.pc *,.pnote{transition:none}}
+
+/* ===== совместимость: подписи поверх плиток, низкие экраны (телефон в горизонтали, малое окно) ===== */
+.mid,.gt,.sd,.pn{z-index:40}
+@media (max-height:540px){
+  .hero{top:56px}.tag{margin-bottom:8px}h1{font-size:clamp(36px,13vh,72px)}
+  .card{bottom:16px;padding:12px 14px}.card p{font-size:11px}
+  .mid{top:52px}.mid p,.sd{display:none}
+  .gt{bottom:14px}
+  .final{padding-top:calc(48px + env(safe-area-inset-top,0px));padding-bottom:calc(10px + env(safe-area-inset-bottom,0px))}
+  .final h2{font-size:clamp(22px,7vh,34px)}.final .fs{margin-top:6px;font-size:12px}
+  .plans{margin-top:10px;gap:8px}.pc{padding:8px 10px}.pc .pr{margin:4px 0 6px;font-size:20px}.pc .pr small{margin-top:2px}.pc .ls{display:none}.pc .pk{margin-top:6px}
+  .pnote{margin-top:8px}.fbtns{flex-direction:row;margin-top:10px;gap:10px}.fbtns .btn{width:auto;padding:11px 20px}
+}
+@media (max-height:340px){.mid{top:40px}}
+
+/* ===== AUREUM, шаг 2: знак в шапке, иконки на плитках, зерно на фоне ===== */
+.nl{display:inline-flex;align-items:center;gap:8px}.nl svg{width:16px;height:16px;flex:none}
+.ic{position:absolute;right:calc(16px*var(--q));top:50%;width:calc(36px*var(--q));height:calc(36px*var(--q));margin-top:calc(-18px*var(--q));display:flex;align-items:center;justify-content:center;border-radius:calc(11px*var(--q));color:rgba(255,237,215,.86);background:rgba(255,237,215,.06);border:calc(1px*var(--q)) solid rgba(255,237,215,.14)}
+.ic svg{display:block;width:calc(20px*var(--q));height:calc(20px*var(--q))}
+.last .ic{color:var(--cream);background:rgba(16,9,4,.14);border-color:rgba(255,237,215,.38)}
+.grain{position:absolute;top:0;right:0;bottom:0;left:0;pointer-events:none;background:url(data:image/png;base64,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)}
+@media (-webkit-min-device-pixel-ratio:2),(min-resolution:192dpi){.grain{background-size:48px 48px}}
+h1,h2,h3{text-wrap:balance}
+.pn p,.sd p,.mid p,.gt p,.card p,.final .fs{text-wrap:pretty}
 </style>
 </head>
 <body>
-<canvas id="fx" aria-hidden="true"></canvas>
+<nav><a href="#" class="nl"><svg viewBox="0 0 32 32" aria-hidden="true"><defs><linearGradient id="lgn" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffd36b"/><stop offset="1" stop-color="#dc5000"/></linearGradient></defs><path fill="url(#lgn)" fill-rule="evenodd" d="M16 3 29 27H3zM16 12 22 24H10z"/></svg>AUREUM</a><span>Веб-студия</span></nav>
+<noscript><div style="position:fixed;left:0;right:0;top:50%;transform:translateY(-50%);padding:0 24px;text-align:center;z-index:60"><p style="font-size:14px;line-height:1.4;color:rgba(255,237,215,.8)">AUREUM — сайты, Telegram-боты и воронки продаж.<br>Включите JavaScript или напишите нам: <a href="https://t.me/BOPHAMETEAM" style="color:#ffb829">@BOPHAMETEAM</a></p></div></noscript>
 
-<header><div class="hb">
-  <a class="logo" href="#hero" aria-label="AUREUM — на главную">
-    <svg viewBox="0 0 32 32" aria-hidden="true"><defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8052ff"/><stop offset="1" stop-color="#15846e"/></linearGradient></defs><path d="M16 3 29 27H3z" fill="url(#lg)"/><path d="M16 12 22 24H10z" fill="#000"/></svg>
-    <span>AUREUM</span>
-  </a>
-  <div class="hr">
-    <button class="nl" id="mb" type="button" aria-expanded="false" aria-controls="menu">Меню</button>
-    <a class="btn" id="hc" href="https://t.me/BOPHAMETEAM" target="_blank" rel="noopener"><span class="hm">Написать в </span>Telegram</a>
-  </div>
-</div></header>
+<main id="track">
+<div class="pin" id="pin">
+  <div class="bgfx" id="bgfx" aria-hidden="true"><i class="halo" id="halo"></i></div>
+  <i class="grain" aria-hidden="true"></i>
+  <div class="stage" id="stage"></div>
 
-<nav id="menu" aria-label="Главное меню" aria-hidden="true">
-<button id="mc" type="button">Закрыть</button>
-<ol>
-<li><a href="#hero"><span>00</span>Главная</a></li>
-<li><a href="#about"><span>01</span>О нас</a></li>
-<li><a href="#services"><span>02</span>Услуги</a></li>
-<li><a href="#pricing"><span>03</span>Тарифы</a></li>
-<li><a href="#offer"><span>04</span>Предложение</a></li>
-<li><a href="#contacts"><span>05</span>Контакты</a></li>
-</ol></nav>
+  <div class="t hero" id="hero"><p class="tag">Сайты, боты и воронки продаж</p><h1>AUREUM</h1></div>
+  <div class="t card" id="card"><h3>Мы — команда из трёх разработчиков.</h3><hr><p>Создаём сайты, Telegram-ботов и воронки, которые приводят клиентов. У вас есть продукт и аудитория? Мы поможем сделать так, чтобы клиенты покупали активнее.</p></div>
+  <div class="cue" id="cue">Листайте вниз</div>
 
-<main>
-<section id="hero"><div class="wrap"><div class="g">
-<h1>Сайты и боты, которые продают, пока вы спите</h1>
-<div class="sp" id="sp" aria-hidden="true"></div>
-<div class="hs"><span class="tag">Открыты для проектов</span><p>Создаём сайты, Telegram-ботов и воронки продаж, которые превращают посетителей в клиентов. Команда из трёх специалистов — без посредников, менеджеров-передатчиков и раздутых смет.</p><a class="lk" href="#contacts">Обсудить задачу ↗</a></div>
-</div></div></section>
+  <div class="t mid" id="mid"><h2>Мы делаем не страницы.<br>Мы делаем систему продаж.</h2><p>Всё, что нужно бизнесу, чтобы приводить клиентов, мы собираем в пять слоёв. Каждый слой отвечает на один вопрос заказчика.</p></div>
+  <div class="t gt" id="g1"><h2>Вместе они взлетают</h2><p>Сайт, бот и воронка работают как одно целое: клиент идёт от первого касания до оплаты и не теряет нить.</p></div>
+  <div class="t gt" id="g2"><h2>И раскрываются веером</h2><p>Любой слой можно взять отдельно. Сейчас расскажем про каждый.</p></div>
 
-<section id="about"><div class="wrap sh rv">
-<div><span class="tag">01 / О нас</span></div>
-<div>
-<p class="man" style="color:var(--color-bone-white)">Нас трое. Мы делаем сайты и ботов, за которые не стыдно перед клиентом.</p>
-<div class="pr3">
-<div><h3>Погружаемся в ваш бизнес, а не в шаблон.</h3><p>Прежде чем рисовать первый экран, разбираемся, кто ваш клиент, что он боится и за что платит. Дизайн — следствие, а не отправная точка.</p></div>
-<div><h3>Каждый проект делает следующий сильнее.</h3><p>Мы не стоим на месте: новый инструмент, новая связка, новая воронка — всё, что реально приносит заявки, идёт в работу. Опыт копится не в презентациях, а в запущенных проектах.</p></div>
-<div><h3>Решаем задачу, а не «рисуем красиво».</h3><p>Иногда бизнесу нужен не сайт, а Telegram-бот. Иногда — воронка на существующем лендинге. Мы честно скажем, что даст результат, даже если это меньше нашей прибыли.</p></div>
-</div></div></div></section>
-
-<section id="why"><div class="wrap rv">
-<span class="tag">02 / Зачем сайт</span>
-<p class="q" style="margin-top:24px;color:var(--color-bone-white)">Сайт — это упаковка товара. Плохая упаковка обесценивает даже хороший продукт.</p>
-<div class="c3">
-<div><h3>Первое впечатление решает за 3 секунды.</h3><p>Столько времени клиент тратит, чтобы понять: «мне тут доверяют или нет». Аккуратный сайт выигрывает этот момент ещё до первого созвона.</p></div>
-<div><h3>Доверие, которое поднимает цену.</h3><p>Понятный сайт выделяет вас среди конкурентов и позволяет продавать дороже — без скидок и уговоров. Люди платят за ощущение надёжности.</p></div>
-<div><h3>Продажи без выходных и менеджеров.</h3><p>Сайт рассказывает о продукте, отвечает на вопросы и собирает заявки, пока вы спите. Каждый посетитель — потенциальный клиент, а не потерянный трафик.</p></div>
-</div></div></section>
-
-<section id="services"><div class="wrap sh rv">
-<div><span class="tag">03 / Услуги</span></div>
-<div>
-<h2 style="margin-bottom:60px">Чем мы можем помочь</h2>
-<ul class="sv">
-<li><span class="tag">a</span><h3>Сайт с нуля</h3><p>Лендинг или многостраничник под ключ: структура, дизайн, вёрстка, запуск. Собираем сайт, который продаёт, а не просто «есть».</p></li>
-<li><span class="tag">b</span><h3>Редизайн сайта</h3><p>Обновляем внешний вид и структуру старого сайта, сохраняя тексты и адрес. Клиенты видят современный сайт — конверсия растёт без переезда.</p></li>
-<li><span class="tag">c</span><h3>Telegram-боты</h3><p>Приём заявок, каталог, оплата, рассылки. Бот работает вместо менеджера — отвечает мгновенно, не устаёт и не теряет заявки.</p></li>
-<li><span class="tag">d</span><h3>Воронки продаж</h3><p>Путь клиента от первого касания до оплаты: цепочки сообщений, прогрев, точки возврата. Превращаем «интересно» в «оплатил».</p></li>
-<li><span class="tag">e</span><h3>Доработка и поддержка</h3><p>Правки, новые блоки, скорость, базовое SEO. Остаёмся на связи после запуска — сайт не умирает через месяц.</p></li>
-</ul></div></div></section>
-
-<section id="nums" aria-label="Цифры"><div class="wrap rv"><div class="n">
-<div><b>3</b><span>специалиста — работают над вашим проектом напрямую</span></div><div><b>24/7</b><span>на связи — отвечаем в Telegram в течение часа</span></div></div></div></section>
-
-<section id="pricing"><div class="wrap rv">
-<span class="tag">04 / Тарифы</span>
-<h2 style="margin:24px 0 60px">Цены без сюрпризов</h2>
-<div class="pl" role="group" aria-label="Выбор тарифа">
-<button class="plan" type="button" aria-pressed="false" data-plan="basic" data-name="Базовый"><span class="tag">01</span><h3>Базовый</h3><div class="pc">$80<small> · ≈7 500 ₽</small></div><p class="pd">Для тех, кому нужна первая рабочая витрина.</p><ul><li>сайт</li><li>адаптив</li><li>базовое SEO</li></ul><span class="pk"><span class="p0">Выбрать</span><span class="p1">Выбрано ✓</span></span></button>
-<button class="plan" type="button" aria-pressed="false" data-plan="optimal" data-name="Оптимальный"><span class="tag">02</span><h3>Оптимальный</h3><div class="pc">$200<small> · ≈18 500 ₽</small></div><p class="pd">Для тех, кто хочет собирать заявки сразу.</p><ul><li>сайт</li><li>Telegram-бот</li><li>заявки в Telegram</li><li>поддержка 1 месяц</li></ul><span class="pk"><span class="p0">Выбрать</span><span class="p1">Выбрано ✓</span></span></button>
-<button class="plan" type="button" aria-pressed="false" data-plan="turnkey" data-name="Под ключ"><span class="tag">03</span><h3>Под ключ</h3><div class="pc">$400<small> · ≈37 000 ₽</small></div><p class="pd">Для тех, кто хочет систему продаж, а не просто страницу.</p><ul><li>сайт</li><li>Telegram-бот</li><li>воронка продаж</li><li>ведение 3 месяца</li></ul><span class="pk"><span class="p0">Выбрать</span><span class="p1">Выбрано ✓</span></span></button>
+  <div id="sds"></div>
+  <div id="pns"></div>
+  <div class="t final" id="final"><div class="fin">
+    <h2>Готовы начать?</h2>
+    <p class="fs">Обсудим вашу задачу бесплатно. Покажем примеры и предложим решение.</p>
+    <div class="plans" id="plans" role="group" aria-label="Выбор тарифа">
+      <button type="button" class="pc" data-s="0" data-plan="basic" data-name="Базовый" aria-pressed="false"><span class="nm">Базовый</span><span class="pr">$80<small>≈ 7&nbsp;500 ₽</small></span><span class="ls"><span>сайт</span><span>адаптив</span><span>базовое SEO</span></span><span class="pk"><span class="p0">Выбрать</span><span class="p1">Выбрано ✓</span></span></button>
+      <button type="button" class="pc hot" data-s="1" data-plan="optimal" data-name="Оптимальный" aria-pressed="false"><span class="nm">Оптимальный</span><span class="pr">$200<small>≈ 18&nbsp;500 ₽</small></span><span class="ls"><span>сайт</span><span>Telegram-бот</span><span>заявки в Telegram</span><span>поддержка 1 месяц</span></span><span class="pk"><span class="p0">Выбрать</span><span class="p1">Выбрано ✓</span></span></button>
+      <button type="button" class="pc" data-s="2" data-plan="turnkey" data-name="Под ключ" aria-pressed="false"><span class="nm">Под ключ</span><span class="pr">$400<small>≈ 37&nbsp;000 ₽</small></span><span class="ls"><span>сайт</span><span>Telegram-бот</span><span>воронка продаж</span><span>ведение 3 месяца</span></span><span class="pk"><span class="p0">Выбрать</span><span class="p1">Выбрано ✓</span></span></button>
+    </div>
+    <p class="pnote" id="pnote" data-s="3" aria-live="polite">Выберите тариф — добавим его в сообщение</p>
+    <div class="fbtns" data-s="4"><a class="btn gold" href="https://t.me/BOPHAMETEAM" target="_blank" rel="noopener">Написать в Telegram</a><a class="btn ghost" href="https://t.me/demo_aureum_bot" target="_blank" rel="noopener">Посмотреть демо-бота</a></div>
+  </div></div>
 </div>
-<p class="pn">Оплата через <b>Telegram Wallet</b>. Детали и сроки фиксируем до старта. Нужен редизайн или нестандартная задача — назовём цену после короткого разговора.</p>
-<p class="pcta"><a class="btn" href="#contacts" id="planCta">Оставить заявку ↗</a></p>
-</div></section>
-
-<section id="offer"><div class="wrap rv">
-<span class="tag">05 / Стартовое предложение</span>
-<p class="q" style="margin-top:24px;color:var(--color-bone-white)">Мы только начинаем. Первым трём проектам — скидка 50% в обмен на честный отзыв и право показать работу.</p>
-<div class="c3">
-<div><h3>Скидка 50%</h3><p>На любой тариф. Фиксируем цену до старта — без сюрпризов.</p></div>
-<div><h3>Взамен — отзыв</h3><p>Честный, с вашими словами. Без правок с нашей стороны.</p></div>
-<div><h3>Право показать</h3><p>Скриншот и короткое описание проекта. Без раскрытия коммерческой тайны.</p></div>
-</div>
-<p class="pcta"><a class="btn" href="https://t.me/BOPHAMETEAM" target="_blank" rel="noopener">Забрать одно из трёх мест ↗</a></p>
-</div></section>
-
-<section id="contacts"><div class="wrap rv">
-<span class="tag">06 / Контакты</span>
-<h2>Давайте работать вместе</h2>
-<div class="cl"><a href="https://t.me/BOPHAMETEAM" target="_blank" rel="noopener">Telegram ↗</a><a href="mailto:m85261135@gmail.com?subject=%D0%9D%D1%83%D0%B6%D0%BD%D0%B0%20%D0%BA%D0%BE%D0%BD%D1%81%D1%83%D0%BB%D1%8C%D1%82%D0%B0%D1%86%D0%B8%D1%8F">Email ↗</a></div>
-<p class="cs">В Telegram отвечаем в течение часа. Первая консультация — бесплатно.</p>
-<p id="planNote" aria-live="polite">Выбран тариф: <span id="planName"></span></p>
-</div></section>
 </main>
 
-<footer><div class="wrap fb">
-<div><div class="logo"><svg viewBox="0 0 32 32" aria-hidden="true"><defs><linearGradient id="lg2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8052ff"/><stop offset="1" stop-color="#15846e"/></linearGradient></defs><path d="M16 3 29 27H3z" fill="url(#lg2)"/><path d="M16 12 22 24H10z" fill="#000"/></svg><span>AUREUM</span></div><span class="cap">© 2026 AUREUM</span></div>
-<nav aria-label="Ссылки">
-<a href="https://t.me/demo_aureum_bot" target="_blank" rel="noopener" class="bt">Попробовать нашего бота</a>
-<button type="button" id="thx" class="bt" aria-haspopup="dialog">Спасибо за просмотр</button>
-<a href="https://t.me/BOPHAMETEAM" target="_blank" rel="noopener">Telegram</a>
-<a href="mailto:m85261135@gmail.com">Email</a></nav>
-</div></footer>
-
-<div id="bar"><a href="https://t.me/BOPHAMETEAM" target="_blank" rel="noopener"><span>Написать в Telegram</span><span>↗</span></a></div>
-
-<div id="md" role="dialog" aria-modal="true" aria-labelledby="mt" aria-hidden="true"><div>
-<h2 id="mt">Спасибо!</h2><p>Рады, что заглянули. Если есть задача — напишите нам в Telegram, ответим в течение часа.</p>
-<a class="lk" href="https://t.me/BOPHAMETEAM" target="_blank" rel="noopener">Написать в Telegram ↗</a><button class="lk" type="button" id="mx">Закрыть</button></div></div>
+<footer class="ft">
+  <div><a class="flogo" href="#" aria-label="AUREUM — наверх"><svg viewBox="0 0 32 32" aria-hidden="true"><defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffd36b"/><stop offset="1" stop-color="#dc5000"/></linearGradient></defs><path d="M16 3 29 27H3z" fill="url(#lg)"/><path d="M16 12 22 24H10z" fill="#100904"/></svg><span>AUREUM</span></a><small>© 2026 AUREUM</small></div>
+  <div class="fl"><a href="https://t.me/BOPHAMETEAM" target="_blank" rel="noopener">Telegram</a><a href="mailto:m85261135@gmail.com">Email</a></div>
+</footer>
 
 <script>
-(()=>{
-const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
-const rm=matchMedia('(prefers-reduced-motion:reduce)').matches;
+(function(){
+  var DATA=[
+    ['Сайты','Создание сайтов под ключ','Лендинги и многостраничники: от структуры до запуска.',
+      'Сайт, который продаёт','Лендинг или многостраничник под ключ: структура, дизайн, вёрстка и запуск. Можем обновить и старый сайт: сохраним тексты и адрес, а клиенты увидят современный вид.',['Лендинг или многостраничник','Редизайн без переезда','Доработка и поддержка']],
+    ['Боты','Telegram-боты и автоматизация','Приём заявок, оплата и рассылки без менеджера.',
+      'Бот вместо менеджера','Приём заявок, каталог, оплата, рассылки. Бот отвечает мгновенно, не устаёт и не теряет заявки: работает круглые сутки, пока вы занимаетесь делом.',['Заявки и каталог','Оплата и рассылки','Ответы 24/7']],
+    ['Воронки','Оптимизация потока клиентов','Путь клиента от первого касания до оплаты.',
+      'Из «интересно» в «оплатил»','Строим путь клиента шаг за шагом: цепочки сообщений, прогрев, точки возврата. Каждый шаг подводит человека ближе к покупке, и заявки не теряются по дороге.',['Цепочки сообщений','Прогрев аудитории','Точки возврата']],
+    ['Команда','Максим, Кирилл, Бехруз','Трое разработчиков: напрямую, без посредников.',
+      'Трое, без посредников','Над проектом работают сами разработчики: Максим, Кирилл и Бехруз. Никаких менеджеров-передатчиков и раздутых смет: вы говорите с теми, кто делает.',['Максим','Кирилл','Бехруз','Ответ в течение часа']],
+    ['Стоимость','Тарифы от $80 до $400','Три тарифа, цена фиксируется до старта.',
+      'Цены без сюрпризов','Базовый — $80, Оптимальный — $200, Под ключ — $400. Оплата через Telegram Wallet, детали и сроки фиксируем до старта. Первым трём проектам — скидка 50% за честный отзыв.',['От $80 до $400','Telegram Wallet','Скидка 50% первым трём']]
+  ];
+  var SV='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">';
+  var ICO=[   // сайт, бот, воронка, команда, цена
+    SV+'<rect x="3" y="4.5" width="18" height="15" rx="2.5"/><path d="M3 9.5h18M6.6 7h.01M9.2 7h.01"/></svg>',
+    SV+'<rect x="4.5" y="8.5" width="15" height="10.5" rx="3"/><path d="M12 8.5V5.2M2.8 12.5v3M21.2 12.5v3M9.5 16h5"/><circle cx="12" cy="4.3" r=".9"/><circle cx="9.3" cy="12.6" r=".7"/><circle cx="14.7" cy="12.6" r=".7"/></svg>',
+    SV+'<path d="M3.5 5h17L14 12.5v6l-4-2v-4z"/></svg>',
+    SV+'<circle cx="12" cy="8" r="3"/><path d="M6.2 19.5c0-3.3 2.6-5.5 5.8-5.5s5.8 2.2 5.8 5.5"/><circle cx="4.8" cy="10" r="1.9"/><circle cx="19.2" cy="10" r="1.9"/><path d="M1.8 17.6c.2-1.9 1.3-3.2 3-3.4M22.2 17.6c-.2-1.9-1.3-3.2-3-3.4"/></svg>',
+    SV+'<circle cx="12" cy="12" r="8.5"/><path d="M14.7 9.4c-.4-.9-1.4-1.5-2.7-1.5-1.5 0-2.6.8-2.6 1.9 0 1.2 1 1.7 2.6 2.1 1.6.4 2.8.9 2.8 2.2 0 1.2-1.2 2-2.8 2-1.4 0-2.5-.6-2.9-1.6M12 6.4v1.5M12 16.1v1.5"/></svg>'
+  ];
+  var CFG=[{lift:.40,swing:0,side:.20,sp:[360,0,0],zoom:0},
+           {lift:.14,swing:-.25,side:-.24,sp:[0,360,0],zoom:0},
+           {lift:.45,swing:0,side:.20,sp:[0,0,-360],zoom:.08},
+           {lift:-.22,swing:.25,side:-.22,sp:[-360,0,0],zoom:0},
+           {lift:.30,swing:0,side:0,sp:[0,360,0],zoom:.22}];
+  var OUT=[[-1.4,-.5,-200,30],[1.5,-.8,240,-40],[-1.5,.7,-260,25],[1.6,.6,220,-30],[.2,-1.4,-160,45]];
+  var IN =[[1.5,-1.1,160,-35],[-1.6,-.9,-200,30],[1.5,1.0,240,-25],[-1.5,1.1,-180,35],[0,1.5,140,-40]];
+  var Q=1.8;   // должно совпадать с --q в .plate
+  var C0=.78,CL=.056;   // главы (CL удлинён: каждая карточка дольше и спокойнее)
 
-/* reveal */
-const rv=$$('.rv');
-if('IntersectionObserver' in window&&!rm){
-  const io=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('on');io.unobserve(x.target)}}),{threshold:.1});
-  rv.forEach(r=>io.observe(r));
-}else rv.forEach(r=>r.classList.add('on'));
+  var $=function(id){return document.getElementById(id)};
+  var track=$('track'),stage=$('stage'),pin=$('pin');
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var plates=[],hls=[],sds=[],pns=[];
+  DATA.forEach(function(d,i){
+    var p=document.createElement('div');p.className='plate'+(i===4?' last':'');
+    p.innerHTML='<div class="hl"></div><div class="row"><b>0'+(i+1)+'</b>'+d[0]+'</div><small>'+d[1]+'</small><span class="ic">'+ICO[i]+'</span>';
+    stage.appendChild(p);plates.push(p);hls.push(p.firstChild);
+    var s=document.createElement('div');s.className='t sd';s.innerHTML='<span class="n">0'+(i+1)+'</span><h3>'+d[0]+'</h3><p>'+d[2]+'</p>';
+    $('sds').appendChild(s);sds.push(s);
+    var n=document.createElement('div');n.className='t pn';n.innerHTML='<span class="n">0'+(i+1)+' / 05</span><h3>'+d[3]+'</h3><p>'+d[4]+'</p><ul>'+d[5].map(function(x){return'<li>'+x+'</li>'}).join('')+'</ul>';
+    $('pns').appendChild(n);pns.push(n);
+  });
+  var hero=$('hero'),card=$('card'),cue=$('cue'),mid=$('mid'),g1=$('g1'),g2=$('g2'),fin=$('final'),bgfx=$('bgfx'),halo=$('halo'),parts=[].slice.call($('final').querySelectorAll('[data-s]'));
 
-/* constellation: morphs by section (0 brain, 1 services, 2 pricing, 3 dot) */
-const cv=$('#fx'),cx=cv.getContext('2d');
-const COL=['#8052ff','#8052ff','#ffb829','#15846e','#15846e','#d63fa6','#3b6bff'];
-let W=0,H=0,dpr=1,mobile=false,B=[],A=[],px=0,py=0,spY=0,dim=1,morph=0,morphTarget=0,ang=0,lastT=0,rotCur=1;
-const rnd=Math.random,lerp=(a,b,t)=>a+(b-a)*t,c01=v=>v<0?0:v>1?1:v;
-function brainPoint(){
-  const s=rnd()<.5?-1:1;
-  let u=rnd()*2-1,th=rnd()*Math.PI*2,r=Math.sqrt(1-u*u);
-  let dx=r*Math.cos(th),dy=u,dz=r*Math.sin(th);
-  const w=1+.09*Math.sin(dx*9+dy*7)+.07*Math.sin(dz*8-dy*5);
-  const k=.84+.16*Math.pow(rnd(),.5);
-  let x=s*.2+dx*.62*w*k,y=dy*.72*w*k-.04*Math.abs(dx),z=dz*.78*w*k;
-  if(Math.abs(x)<.035&&y>-.1)x+=s*.07;
-  return {x,y,z};
-}
-function servicesPoint(i){
-  const c=i%5,an=(c/5)*Math.PI*2-Math.PI/2,x0=Math.cos(an)*.55,y0=Math.sin(an)*.55;
-  const a=rnd()*Math.PI*2,r=Math.pow(rnd(),.6)*.18;
-  return {x:x0+Math.cos(a)*r,y:y0+Math.sin(a)*r,z:(rnd()-.5)*.3};
-}
-function pricingPoint(i){
-  const x0=((i%3)-1)*.5,y=(rnd()-.5)*1.1,a=rnd()*Math.PI*2,r=Math.pow(rnd(),.7)*.12;
-  return {x:x0+Math.cos(a)*r,y,z:Math.sin(a)*r};
-}
-function offerPoint(){
-  const a=rnd()*Math.PI*2,b=rnd()*Math.PI*2,r=Math.pow(rnd(),1.6)*.12;
-  return {x:Math.cos(a)*Math.cos(b)*r,y:Math.sin(a)*Math.cos(b)*r,z:Math.sin(b)*r};
-}
-function build(){
-  mobile=innerWidth<900;
-  const N=mobile?1100:2800,M=mobile?80:280;
-  B=[];A=[];
-  for(let i=0;i<N;i++)B.push({base:brainPoint(),svc:servicesPoint(i),pri:pricingPoint(i),off:offerPoint(),c:COL[(rnd()*COL.length)|0],a:rnd()*6.28,sp:(rnd()-.5)*.6,sz:2.2+rnd()*3.2});
-  for(let i=0;i<M;i++)A.push({x:rnd(),y:rnd(),vx:(rnd()-.5)*.004,vy:(rnd()-.5)*.004,c:COL[(rnd()*COL.length)|0],a:rnd()*6.28,sz:3+rnd()*5});
-}
-function size(){
-  dpr=Math.min(devicePixelRatio||1,2);W=innerWidth;H=innerHeight;
-  cv.width=W*dpr;cv.height=H*dpr;cx.setTransform(dpr,0,0,dpr,0,0);
-}
-function tri(x,y,s,a){
-  cx.moveTo(x+Math.cos(a)*s,y+Math.sin(a)*s);
-  cx.lineTo(x+Math.cos(a+2.094)*s,y+Math.sin(a+2.094)*s);
-  cx.lineTo(x+Math.cos(a+4.189)*s,y+Math.sin(a+4.189)*s);
-  cx.closePath();
-}
-const SC=[1,.9,1,.55],RS=[1,1.6,.6,2.2];
-const at=(arr,m)=>{const i=Math.min(3,Math.floor(m)),f=m-i;return lerp(arr[i],arr[Math.min(3,i+1)],f)};
-function paint(t){
-  const dt=lastT?Math.min(50,t-lastT):0;lastT=t;
-  if(rm)morph=morphTarget;else morph+=(morphTarget-morph)*.04;
-  cx.clearRect(0,0,W,H);
-  cx.lineWidth=1.2;
-  const byC={};
-  for(const p of A){
-    if(!rm){p.x+=p.vx*.1;p.y+=p.vy*.1;if(p.x<0)p.x=1;if(p.x>1)p.x=0;if(p.y<0)p.y=1;if(p.y>1)p.y=0}
-    (byC[p.c]=byC[p.c]||[]).push(p);
+  function clamp(v){return v<0?0:v>1?1:v}
+  function lerp(a,b,t){return a+(b-a)*t}
+  function esn(t){return .5-.5*Math.cos(Math.PI*t)}   // мягкая синусоидальная кривая (пик скорости вдвое ниже, чем у eio)
+  function eio(t){return t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2}
+  // записываем стиль только если значение изменилось
+  function put(el,k,v){var c=el._c||(el._c={});if(c[k]!==v){c[k]=v;el.style[k]=v}}
+  function vis(el,o,tf){var s=o.toFixed(2);put(el,'opacity',s);if(o>.01)put(el,'transform',tf);put(el,'visibility',o>.01?'visible':'hidden');put(el,'pointerEvents',o>.5?'auto':'none')}
+
+  var W,H,S,cy,mobile,fs,fy,fw,push=0;
+  function size(f){
+    var w0=innerWidth,h0=pin.clientHeight||innerHeight;if(!f&&w0===W&&h0===H)return;W=w0;H=h0;mobile=W<=900;
+    if(mobile){S=Math.min(.8,(W-30)/390,H*.46/484);cy=H*.40;fs=1.12;fy=H*.27}
+    else{S=Math.min(1,(W*.9)/1000,(H-130)/500);cy=H*.52;fs=1.35;fy=H*.5}
+    S=Math.max(.45,S);
+    // в главе «mid» колонку плиток опускаем под заголовок и выше подписи снизу (сдвиг push); hero и главы остаются как были
+    var sh=0;sds.forEach(function(e){sh=Math.max(sh,e.offsetHeight)});
+    var top0=mid.offsetTop+mid.offsetHeight+(H<=340?6:16),rsv=mobile&&sh?sh+72:28;
+    S=Math.max(.45,Math.min(S,(H-top0-rsv)/484));
+    push=Math.max(0,Math.min(top0+242*S-cy,H-8-242*S-cy));
+    // финал: если блок выше экрана (низкие и горизонтальные телефоны), вписываем его масштабом
+    var fi=fin.querySelector('.fin'),fc=getComputedStyle(fin);fi.style.transform='';
+    var room=H-parseFloat(fc.paddingTop)-parseFloat(fc.paddingBottom),fh=fi.offsetHeight;
+    if(fh>room)fi.style.transform='scale('+Math.max(.5,room/fh).toFixed(3)+')';
+    fw=170*S*fs;
+    var aw=Math.max(150,Math.min(400,W/2-fw-56));
+    sds.forEach(function(el,i){
+      el.style.top=mobile?'auto':(cy+push+(i-2)*100*S)+'px';
+      if(mobile)return;
+      el.style.width=Math.min(W*.26,360)+'px';
+      if(i%2){el.style.left='auto';el.style.right=(W/2+170*S+40)+'px';el.style.textAlign='right'}
+      else{el.style.right='auto';el.style.left=(W/2+170*S+40)+'px';el.style.textAlign='left'}
+    });
+    pns.forEach(function(el,i){
+      if(mobile)return;
+      el.style.width=aw+'px';
+      if(i%2){el.style.left='auto';el.style.right=(W/2+fw+28)+'px'}else{el.style.right='auto';el.style.left=(W/2+fw+28)+'px'}
+    });
+    kick();
   }
-  cx.globalAlpha=.15;
-  for(const c in byC){cx.strokeStyle=c;cx.beginPath();for(const p of byC[c])tri(p.x*W,p.y*H,p.sz,p.a+t*.0003);cx.stroke()}
-  const cxp=mobile?W*.5:W*.72,cyp=mobile?Math.max(spY-scrollY,H*.4):H*.52;
-  const R=(mobile?Math.min(W,H)*.42:Math.min(W*.5,H)*.6)*at(SC,morph);
-  rotCur+=(at(RS,morph)-rotCur)*.05;
-  if(!rm)ang+=dt*.00014*rotCur;
-  const cs=Math.cos(ang),sn=Math.sin(ang),tilt=-.18,ct=Math.cos(tilt),st=Math.sin(tilt);
-  const m1=c01(morph),m2=c01(morph-1),m3=c01(morph-2);
-  const g={};
-  for(const p of B){
-    let x=lerp(p.base.x,p.svc.x,m1),y=lerp(p.base.y,p.svc.y,m1),z=lerp(p.base.z,p.svc.z,m1);
-    if(morph>1){x=lerp(x,p.pri.x,m2);y=lerp(y,p.pri.y,m2);z=lerp(z,p.pri.z,m2)}
-    if(morph>2){x=lerp(x,p.off.x,m3);y=lerp(y,p.off.y,m3);z=lerp(z,p.off.z,m3)}
-    const rx=x*cs+z*sn+px*.06,rz=-x*sn+z*cs;
-    const y2=y*ct-rz*st+py*.06,z2=y*st+rz*ct;
-    const per=1/(1.9-z2*.6),b=z2>.3?2:z2>-.3?1:0;
-    const k=(g[p.c+b]=g[p.c+b]||{c:p.c,b,l:[]});
-    k.l.push(cxp+rx*R*per*1.55,cyp+y2*R*per*1.55,p.sz*per*(mobile?.8:1),p.a+t*p.sp*.001);
+
+  var lt=0,sp=0,fp=0,running=false,zc=[],END=.95,SPM=C0+5*CL;   // sp — прогресс плиток (старая шкала, 0…SPM), fp — прогресс финала (0..1); плитки играют на первых 95% прокрутки, финал на последних 5%
+  function kick(){if(!running){running=true;requestAnimationFrame(loop)}}
+  function loop(){
+    var now=performance.now(),dt=lt?Math.min(64,now-lt):16.667;lt=now;
+    var r=track.getBoundingClientRect(),p=clamp(-r.top/(track.offsetHeight-H)),pa=clamp(p/END)*SPM,pf=clamp((p-END)/(1-END));
+    var sm=reduce?1:(sp>C0-.02?.08:.12);   // в главах чуть больше инерции — движение мягче
+    sm=1-Math.pow(1-sm,dt/16.667);
+    sp+=(pa-sp)*sm;if(Math.abs(pa-sp)<.0004)sp=pa;fp+=(pf-fp)*sm;if(Math.abs(pf-fp)<.0004)fp=pf;
+    var fo=esn(clamp(fp/.35)),tp=sp/SPM*END+fp*(1-END);
+    var wp=esn(clamp((sp-.20)/.10))*(1-esn(clamp((sp-.50)/.08))),cyE=cy+push*wp;   // сдвиг колонки включён только пока на экране заголовок «mid»
+    var F=[],ZI=[];
+    for(var i=0;i<5;i++){
+      var a=.03+i*.03,t1=clamp((sp-a)/.10),b=.26+i*.03,t2=clamp((sp-b)/.10);
+      var x,y,rx,ry,rz,sc,colY=cyE+(i-2)*100*S,f=0,zi=10-i;
+      if(t2<=0){                                   // 1. разлёт
+        var e=Math.pow(t1,2.2);
+        x=lerp(0,OUT[i][0]*W,e);y=lerp(cyE-(i-2)*28*S,cyE+OUT[i][1]*H,e);
+        rz=lerp(-6,OUT[i][2],e);ry=lerp(0,OUT[i][3],e);rx=lerp(48,20,e);sc=lerp(1.05*S,.8*S,e);
+      }else{                                       // 2. мягкая посадка
+        var q=1-Math.pow(1-t2,3.2);
+        x=lerp(IN[i][0]*W,0,q);y=lerp(cyE+IN[i][1]*H,colY,q);
+        rz=lerp(IN[i][2],0,q);ry=lerp(IN[i][3],0,q);rx=lerp(-25,0,q);sc=lerp(.8*S,S,q);
+      }
+      // 3. все вместе взмывают волной, делают переворот и опускаются
+      var uA=clamp((sp-(.52+i*.008))/.09);
+      if(uA>0&&uA<1){
+        var hA=Math.sin(Math.PI*eio(uA));
+        x=(i-2)*.025*W*hA;y=colY-.34*H*hA;rx=-22*hA;ry=360*eio(uA);rz=(i-2)*4*hA;sc=S*(1+.12*hA);
+      }
+      // 4. раскрываются веером и собираются обратно
+      var uB=clamp((sp-(.65+i*.006))/.10);
+      if(uB>0&&uB<1){
+        var tz=eio(Math.min(1,uB/.35,(1-uB)/.35)),d=i-2;
+        x=d*.17*W*tz;y=lerp(colY,cy-.10*H+d*d*.03*H,tz);rz=d*10*tz;ry=(i%2?-1:1)*22*tz;rx=-10*tz;sc=S*(1+.05*tz);zi=20-Math.abs(d);
+      }
+      // 5. главы: взмывает, разворачивается, рассказывает, опускается в сторону
+      var u=clamp((sp-(C0+i*CL))/CL);
+      if(u>0){
+        var k=clamp(u/.38),ein=esn(k),v=esn(clamp((u-.68)/.32)),c=CFG[i],arc=Math.sin(Math.PI*ein);   // дольше, мягче, старт подъёма без рывка
+        f=ein*(1-v);
+        x=c.side*W*Math.sin(Math.PI*v)+c.swing*W*arc;
+        y=lerp(colY,fy,f)-c.lift*H*arc;
+        rx=c.sp[0]*ein;ry=c.sp[1]*ein;rz=c.sp[2]*ein+(c.side<0?-1:1)*10*Math.sin(Math.PI*v);
+        sc=S*(1+(fs-1)*f+c.zoom*arc);
+        if(f>.02)zi=30;
+      }
+      if(fo>0){y-=fo*.08*H;sc*=1-.1*fo}   // финал: плитки уходят вверх и растворяются
+      F[i]=f;ZI[i]=zi;
+      var el=plates[i];
+      el.style.transform='translate3d('+x.toFixed(1)+'px,'+(y-H/2).toFixed(1)+'px,0) rotateX('+rx.toFixed(1)+'deg) rotateY('+ry.toFixed(1)+'deg) rotateZ('+rz.toFixed(1)+'deg) scale('+(sc/Q).toFixed(4)+')';
+      put(hls[i],'opacity',f.toFixed(2));
+    }
+    for(i=0;i<5;i++){
+      var o=1;for(var j=0;j<5;j++)if(j!==i)o=Math.min(o,1-.82*F[j]);
+      put(plates[i],'opacity',(o*(1-fo)).toFixed(2));put(plates[i],'visibility',fo<.99?'visible':'hidden');put(plates[i],'zIndex',String(ZI[i]));
+    }
+
+    // тексты (только opacity и transform)
+    var h0=1-clamp(sp/.07);
+    [hero,card,cue].forEach(function(el){vis(el,h0,'translate3d(0,'+((1-h0)*-24).toFixed(0)+'px,0)')});
+    var m=clamp((sp-.25)/.04)*(1-clamp((sp-.47)/.03));vis(mid,m,'translate3d(0,'+((1-m)*18).toFixed(0)+'px,0)');
+    var ga=clamp((sp-.535)/.03)*(1-clamp((sp-.63)/.03)),gb=clamp((sp-.665)/.03)*(1-clamp((sp-.745)/.03));
+    vis(g1,ga,'translate3d(0,'+((1-ga)*18).toFixed(0)+'px,0)');vis(g2,gb,'translate3d(0,'+((1-gb)*18).toFixed(0)+'px,0)');
+    sds.forEach(function(el,i){
+      var on=clamp((sp-(.26+i*.03+.10))/.04)*(1-clamp((sp-.50)/.03));
+      if(mobile&&i<4)on*=1-clamp((sp-(.26+(i+1)*.03+.10))/.03);
+      vis(el,on,mobile?'translate3d(0,'+((1-on)*16).toFixed(0)+'px,0)':'translate3d('+((i%2?1:-1)*-(1-on)*30).toFixed(0)+'px,-50%,0)');
+    });
+    pns.forEach(function(el,i){
+      var u=clamp((sp-(C0+i*CL))/CL),on=esn(clamp((u-.30)/.18))*(1-esn(clamp((u-.66)/.18)));
+      vis(el,on,mobile?'translate3d(0,'+((1-on)*30).toFixed(0)+'px,0)':'translate3d('+((i%2?-1:1)*(1-on)*50).toFixed(0)+'px,-50%,0)');
+    });
+    // финал: блок выезжает снизу (opacity 0→1, translateY 40→0), затем по очереди проявляются карточки и кнопки
+    vis(fin,fo,'translate3d(0,'+((1-fo)*40).toFixed(0)+'px,0)');
+    var fon=fo>.5;if(fin._on!==fon){fin._on=fon;fin.classList.toggle('on',fon)}
+    for(var qi=0;qi<parts.length;qi++){var ds=+parts[qi].dataset.s,po=esn(clamp((fp-.06-ds*.08)/.28));vis(parts[qi],po,'translate3d(0,'+((1-po)*(ds>2?16:24)).toFixed(0)+'px,0)')}
+    // параллакс фона: градиент чуть смещается при прокрутке, в финале теплеет до золота
+    put(halo,'opacity',fo.toFixed(2));
+    if(!reduce)put(bgfx,'transform','translate3d('+(Math.sin(tp*9.4)*W*.012).toFixed(1)+'px,'+((.5-tp)*H*.10).toFixed(1)+'px,0)');
+
+    if(sp!==pa||fp!==pf)requestAnimationFrame(loop);else{running=false;lt=0}   // в покое цикл не крутится
   }
-  const al=[.35,.65,1];let gi=0;
-  for(const key in g){
-    const k=g[key],pulse=k.b===2&&!rm?.85+.15*Math.sin(t*.0008+gi*.7):1;gi++;
-    cx.globalAlpha=al[k.b]*dim*pulse*(mobile?.8:1);cx.strokeStyle=k.c;cx.beginPath();
-    for(let i=0;i<k.l.length;i+=4)tri(k.l[i],k.l[i+1],k.l[i+2],k.l[i+3]);
-    if(k.b===2&&!mobile){cx.shadowBlur=6;cx.shadowColor=k.c}
-    cx.stroke();cx.shadowBlur=0;
+  // выбор тарифа: подсвечивает карточку и подставляет тариф в сообщение для Telegram (повторный клик снимает выбор)
+  var cards=[].slice.call(document.querySelectorAll('.pc')),plansEl=$('plans'),pnote=$('pnote'),sel=null,
+      tgs=[].slice.call(document.querySelectorAll('a[href^="https://t.me/BOPHAMETEAM"]'));
+  function renderPlan(){
+    var cur=cards.filter(function(c){return c.dataset.plan===sel})[0];
+    plansEl.classList.toggle('hs',!!cur);
+    cards.forEach(function(c){c.setAttribute('aria-pressed',c===cur)});
+    pnote.textContent=cur?'Тариф «'+cur.dataset.name+'» добавим в сообщение':'Выберите тариф — добавим его в сообщение';
+    var txt='Привет! Нужна консультация'+(cur?'. Интересует тариф «'+cur.dataset.name+'»':'');
+    tgs.forEach(function(a){a.href='https://t.me/BOPHAMETEAM?text='+encodeURIComponent(txt)});
   }
-  cx.globalAlpha=1;
-}
-let run=true;
-function loop(t){paint(t);if(run&&!rm)requestAnimationFrame(loop)}
-const mark=()=>{const b=$('#sp').getBoundingClientRect();spY=b.top+scrollY+b.height/2};
-function init(){size();build();mark();if(rm)paint(0)}
-init();
-addEventListener('load',mark);if(document.fonts)document.fonts.ready.then(mark);
-let rt;addEventListener('resize',()=>{clearTimeout(rt);rt=setTimeout(()=>{init()},150)});
-addEventListener('pointermove',e=>{if(!rm){px=e.clientX/W-.5;py=e.clientY/H-.5}},{passive:true});
-/* beyond the first screen the scene dims so text stays readable */
-addEventListener('scroll',()=>{dim=1-.6*c01((scrollY-innerHeight*.5)/(innerHeight*.5));if(rm)paint(0)},{passive:true});
-const MS={hero:0,about:0,why:0,services:1,pricing:2,offer:3,contacts:3};
-if('IntersectionObserver' in window){
-  const mo=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting&&e.target.id in MS){morphTarget=MS[e.target.id];if(rm)paint(0)}}),{threshold:.25,rootMargin:'-20% 0px -20% 0px'});
-  Object.keys(MS).forEach(id=>{const el=document.getElementById(id);if(el)mo.observe(el)});
-}
-if(!rm){requestAnimationFrame(loop);document.addEventListener('visibilitychange',()=>{run=!document.hidden;if(run)requestAnimationFrame(loop)})}
-
-/* bottom bar */
-const bar=$('#bar');addEventListener('scroll',()=>{bar.classList.toggle('show',scrollY>500);document.body.classList.toggle('sc',scrollY>40)},{passive:true});
-
-/* only one filled CTA per screen: nav pill turns ghost while the pricing CTA is visible */
-if('IntersectionObserver' in window){
-  const vis=new Set(),io2=new IntersectionObserver(e=>{e.forEach(x=>x.isIntersecting?vis.add(x.target):vis.delete(x.target));document.body.classList.toggle('cta2',vis.size>0)},{threshold:0});
-  $$('#planCta,#offer .btn').forEach(b=>io2.observe(b));
-}
-
-/* plans */
-const cards=$$('.plan'),pn=$('#planNote'),pnn=$('#planName');let sel=null;
-function render(){
-  cards.forEach(c=>c.setAttribute('aria-pressed',c.dataset.plan===sel));
-  const cur=cards.find(c=>c.dataset.plan===sel);
-  pn.classList.toggle('show',!!cur);if(cur)pnn.textContent=cur.dataset.name;
-  const txt='Привет! Нужна консультация'+(cur?'. Интересует тариф «'+cur.dataset.name+'»':'');
-  $$('a[href^="https://t.me/BOPHAMETEAM"]').forEach(a=>a.href='https://t.me/BOPHAMETEAM?text='+encodeURIComponent(txt));
-  try{const u=new URL(location.href);if(sel)u.searchParams.set('plan',sel);else u.searchParams.delete('plan');history.replaceState(null,'',u)}catch(e){}
-}
-cards.forEach(c=>c.addEventListener('click',()=>{sel=sel===c.dataset.plan?null:c.dataset.plan;render()}));
-const q=new URLSearchParams(location.search).get('plan');if(cards.some(c=>c.dataset.plan===q))sel=q;
-render();
-
-/* menu */
-const menu=$('#menu'),mb=$('#mb'),mc=$('#mc');
-menu.inert=true;
-function setMenu(o,focus=true){menu.classList.toggle('open',o);menu.inert=!o;menu.setAttribute('aria-hidden',!o);mb.setAttribute('aria-expanded',o);
-  if(o)setTimeout(()=>mc.focus({preventScroll:true}),30);else if(focus)mb.focus({preventScroll:true})}
-mb.addEventListener('click',()=>setMenu(true));mc.addEventListener('click',()=>setMenu(false));
-$$('#menu a').forEach(a=>a.addEventListener('click',()=>setMenu(false,false)));
-
-/* modal */
-const md=$('#md'),tb=$('#thx'),mx=$('#mx');md.inert=true;
-function setMd(o){md.classList.toggle('show',o);md.inert=!o;md.setAttribute('aria-hidden',!o);
-  if(o)setTimeout(()=>mx.focus({preventScroll:true}),30);else tb.focus({preventScroll:true})}
-tb.addEventListener('click',()=>setMd(true));mx.addEventListener('click',()=>setMd(false));
-md.addEventListener('click',e=>{if(e.target===md)setMd(false)});
-
-/* Escape + focus trap */
-document.addEventListener('keydown',e=>{
-  const box=menu.classList.contains('open')?menu:md.classList.contains('show')?md:null;if(!box)return;
-  if(e.key==='Escape'){box===menu?setMenu(false):setMd(false);return}
-  if(e.key!=='Tab')return;
-  const f=[...box.querySelectorAll('a,button')].filter(x=>x.offsetParent!==null||getComputedStyle(x).position==='absolute');if(!f.length)return;
-  const i=f.indexOf(document.activeElement);
-  if(e.shiftKey&&i<=0){e.preventDefault();f[f.length-1].focus()}else if(!e.shiftKey&&i===f.length-1){e.preventDefault();f[0].focus()}
-});
-
-/* Telegram Mini App */
-const tg=window.Telegram&&window.Telegram.WebApp;
-if(tg){const safe=f=>{try{f()}catch(e){}};safe(()=>tg.ready());safe(()=>tg.expand());
-  document.addEventListener('click',e=>{const a=e.target.closest('a[href^="https://t.me/"]');
-    if(!a||typeof tg.openTelegramLink!=='function')return;e.preventDefault();
-    try{tg.openTelegramLink(a.href)}catch(err){window.open(a.href,'_blank')}})}
+  cards.forEach(function(c){c.addEventListener('click',function(){sel=sel===c.dataset.plan?null:c.dataset.plan;renderPlan()})});
+  renderPlan();
+  addEventListener('scroll',kick,{passive:true});
+  addEventListener('resize',function(){size()});addEventListener('orientationchange',function(){setTimeout(size,250)});
+  if(document.fonts){document.fonts.ready.then(function(){size(1)});if(document.fonts.addEventListener)document.fonts.addEventListener('loadingdone',function(){size(1)})}
+  size();
 })();
 </script>
 </body>
